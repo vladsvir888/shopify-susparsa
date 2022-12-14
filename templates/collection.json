@@ -17,9 +17,47 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "enable_quick_add": false,
         "enable_filtering": true,
+        "filter_type": "horizontal",
         "enable_sorting": true,
         "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "be0614d7-553e-4813-bef5-d8b23b12751c": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--17111107567935__be0614d7-553e-4813-bef5-d8b23b12751c-1670067617e3f72f41-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "All Mountain. All you.",
+            "heading_size": "h1"
+          }
+        },
+        "template--17111107567935__be0614d7-553e-4813-bef5-d8b23b12751c-1670067617e3f72f41-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Meet the All Mountain Collection. Performance-driven snow gear designed with you in mind.<\/p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "template--17111107567935__be0614d7-553e-4813-bef5-d8b23b12751c-1670067617e3f72f41-0",
+        "template--17111107567935__be0614d7-553e-4813-bef5-d8b23b12751c-1670067617e3f72f41-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/221115-all-mountain-snow-hp-1-item-text-off-img-d.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -27,6 +65,7 @@
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "be0614d7-553e-4813-bef5-d8b23b12751c"
   ]
 }

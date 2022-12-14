@@ -1,0 +1,256 @@
+<article class="product-card main__product-card">
+  <div class="container product-card__container">
+    <div class="product-card__img-wrap">
+      <img
+        class="product-card__img"
+        width="473"
+        height="707"
+        src="{{ 'main_pic.jpg' | asset_url }}"
+        alt="Girl in white unisex t-shirt."
+      >
+    </div>
+    <div class="product-card__content">
+      <header class="offset-y product-card__header">
+        <h1 id="main_title" class="product-card__title">White unisex t-shirt</h1>
+        <p class="product-card__price">
+          <abbr title="Swiss Franc">CHF</abbr>
+          40
+        </p>
+        <p class="product-card__note">
+          <small>Tax included</small>
+        </p>
+      </header>
+      <form class="form product-card__form" method="post" action="/">
+        <div class="offset-y form__fieldset-wrap">
+          <fieldset class="form__fieldset">
+            <legend class="form__caption">Size</legend>
+            <div class="offset-x form__inner">
+              <div class="radio-btn">
+                <input class="radio-btn__input visually-hidden" id="size_xs" type="radio" name="size" value="XS">
+                <label class="radio-btn__label" for="size_xs">XS</label>
+              </div>
+              <div class="radio-btn">
+                <input class="radio-btn__input visually-hidden" id="size_s" type="radio" name="size" value="S" checked>
+                <label class="radio-btn__label" for="size_s">S</label>
+              </div>
+              <div class="radio-btn">
+                <input class="radio-btn__input visually-hidden" id="size_m" type="radio" name="size" value="M">
+                <label class="radio-btn__label" for="size_m">M</label>
+              </div>
+              <div class="radio-btn">
+                <input class="radio-btn__input visually-hidden" id="size_l" type="radio" name="size" value="L">
+                <label class="radio-btn__label" for="size_l">L</label>
+              </div>
+              <div class="radio-btn">
+                <input class="radio-btn__input visually-hidden" id="size_xl" type="radio" name="size" value="XL">
+                <label class="radio-btn__label" for="size_xl">XL</label>
+              </div>
+              <div class="radio-btn">
+                <input
+                  class="radio-btn__input visually-hidden"
+                  id="size_2xl"
+                  type="radio"
+                  name="size"
+                  value="2XL"
+                  disabled
+                >
+                <label class="radio-btn__label" for="size_2xl">2XL</label>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form__fieldset">
+            <legend class="form__caption">Color - <span aria-hidden="true">White</span></legend>
+            <div class="offset-x form__inner">
+              <div class="radio-btn radio-btn--color">
+                <input
+                  class="radio-btn__input visually-hidden"
+                  id="color_white"
+                  type="radio"
+                  name="color"
+                  value="White"
+                  checked
+                >
+                <label class="radio-btn__label radio-btn__label--white" for="color_white" style="--color: #fff;">
+                  <span class="radio-btn__tooltip" role="tooltip">White</span>
+                </label>
+              </div>
+              <div class="radio-btn radio-btn--color">
+                <input
+                  class="radio-btn__input visually-hidden"
+                  id="color_black"
+                  type="radio"
+                  name="color"
+                  value="Black"
+                >
+                <label class="radio-btn__label" for="color_black" style="--color: #000;">
+                  <span class="radio-btn__tooltip" role="tooltip">Black</span>
+                </label>
+              </div>
+              <div class="radio-btn radio-btn--color">
+                <input class="radio-btn__input visually-hidden" id="color_gray" type="radio" name="color" value="Gray">
+                <label class="radio-btn__label" for="color_gray" style="--color: #aeaeb0;">
+                  <span class="radio-btn__tooltip" role="tooltip">Gray</span>
+                </label>
+              </div>
+              <div class="radio-btn radio-btn--color">
+                <input
+                  class="radio-btn__input visually-hidden"
+                  id="color_purple_latte"
+                  type="radio"
+                  name="color"
+                  value="Purple latte"
+                >
+                <label class="radio-btn__label" for="color_purple_latte" style="--color: #ba9be5;">
+                  <span class="radio-btn__tooltip" role="tooltip">Purple latte</span>
+                </label>
+              </div>
+              <div class="radio-btn radio-btn--color">
+                <input
+                  class="radio-btn__input visually-hidden"
+                  id="color_red"
+                  type="radio"
+                  name="color"
+                  value="Red"
+                  disabled
+                >
+                <label class="radio-btn__label" for="color_red" style="--color: #e9a0a7;">
+                  <span class="radio-btn__tooltip" role="tooltip">Pink</span>
+                </label>
+              </div>
+              <div class="radio-btn radio-btn--color">
+                <input
+                  class="radio-btn__input visually-hidden"
+                  id="color_peach"
+                  type="radio"
+                  name="color"
+                  value="Peach"
+                  disabled
+                >
+                <label class="radio-btn__label" for="color_peach" style="--color: #f8cab1;">
+                  <span class="radio-btn__tooltip" role="tooltip">Peach</span>
+                </label>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form__fieldset">
+            <legend class="form__caption">Quantity</legend>
+            <div class="counter">
+              <button class="counter__btn counter__btn--minus" type="button" aria-label="Decrease counter">
+                <svg
+                  class="counter__icon"
+                  aria-hidden="true"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line y1="6" x2="12" y2="6" stroke="#1A1F29"/>
+                </svg>
+              </button>
+              <input
+                class="counter__input"
+                type="number"
+                name="quantity"
+                inputmode="numeric"
+                value="1"
+                aria-label="Quantity"
+              >
+              <button class="counter__btn counter__btn--plus" type="button" aria-label="Increase counter">
+                <svg
+                  class="counter__icon"
+                  aria-hidden="true"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line x1="6" x2="6" y2="12" stroke="#1A1F29"/>
+                  <line y1="6" x2="12" y2="6" stroke="#1A1F29"/>
+                </svg>
+              </button>
+            </div>
+          </fieldset>
+        </div>
+        <div class="offset-y form__btn-wrap">
+          <button class="btn btn--primary product-card__btn" name="action" value="add" type="submit">
+            Add to cart
+          </button>
+          <button class="btn btn--secondary product-card__btn" name="action" value="quick-buy" type="submit">
+            Buy it now
+          </button>
+        </div>
+      </form>
+      <footer class="offset-y product-card__footer">
+        <p class="product-card__text">
+          A unisex basic garment with a loose fit. Light and&nbsp;comfortable to your skin.
+        </p>
+        <p class="product-card__text">
+          Certification of cotton - <abbr title="Global Organic Textile Standard">GOTS</abbr>
+        </p>
+      </footer>
+    </div>
+    <div class="accordion main__accordion">
+      <div class="accordion__item">
+        <h2 id="accordion_heading_1" class="accordion__heading">
+          <button class="accordion__btn" aria-expanded="false" aria-controls="collapse_1">Sizing & Fit</button>
+        </h2>
+        <section id="collapse_1" class="accordion__content" aria-labelledby="accordion_heading_1">
+          Olga is 175cm, she is wearing a size S.
+        </section>
+      </div>
+
+      <div class="accordion__item">
+        <h2 id="accordion_heading_2" class="accordion__heading">
+          <button class="accordion__btn" aria-expanded="false" aria-controls="collapse_2">Composition & Care</button>
+        </h2>
+        <section id="collapse_2" class="accordion__content" aria-labelledby="accordion_heading_2">
+          We care for you.
+        </section>
+      </div>
+
+      <div class="accordion__item">
+        <h2 id="accordion_heading_3" class="accordion__heading">
+          <button class="accordion__btn" aria-expanded="false" aria-controls="collapse_3">Delivery & Returns</button>
+        </h2>
+        <section id="collapse_3" class="accordion__content" aria-labelledby="accordion_heading_3">
+          We delivery worldwide.
+        </section>
+      </div>
+    </div>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Main product",
+  "limit": 1,
+  "templates": ["product"],
+  "blocks": [
+      {
+        "type": "Accordeon",
+        "name": "Accordeon",
+        "settings": [
+            {
+              "type": "text",
+              "id": "accordeon_heading_id",
+              "label": "Heading",
+              "default": "Heading"
+            },
+            {
+              "type": "richtext",
+              "id": "accordeon_text_id",
+              "label": "Text"
+            }
+        ]
+      }
+  ],
+  "settings": [],
+  "presets": [
+    {
+      "name": "Main product"
+    }
+  ]
+}
+{% endschema %}

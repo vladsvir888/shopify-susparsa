@@ -6,14 +6,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Image banner",
+            "heading": "All Mountain. All you.",
             "heading_size": "h0"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text": "Meet the All Mountain Collection. Performance-driven snow gear designed with you in mind.",
             "text_style": "body"
           }
         },
@@ -21,7 +21,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
+            "button_link_1": "shopify:\/\/collections\/all",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -35,6 +35,7 @@
         "button"
       ],
       "settings": {
+        "image": "shopify:\/\/shop_images\/221115-all-mountain-snow-hp-1-item-text-off-img-d.jpg",
         "image_overlay_opacity": 40,
         "image_height": "large",
         "adapt_height_first_image": false,
@@ -53,14 +54,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "<p>Talk about your brand</p>",
+            "heading": "<p>SAILING, SKIING AND OUTDOOR CLOTHING<\/p>",
             "heading_size": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+            "text": "<p>We make professional grade gear, so you can explore while staying protected against the elements.<\/p>"
           }
         }
       },
@@ -69,6 +70,8 @@
         "text"
       ],
       "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
         "color_scheme": "background-1",
         "full_width": true,
         "padding_top": 40,
@@ -80,17 +83,24 @@
       "settings": {
         "title": "Featured products",
         "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
         "collection": "all",
         "products_to_show": 8,
         "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
         "color_scheme": "background-1",
-        "show_view_all": false,
-        "swipe_on_mobile": false,
         "image_ratio": "adapt",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
+        "enable_quick_add": false,
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 28,
         "padding_bottom": 36
       }
@@ -101,20 +111,20 @@
         "collection-0": {
           "type": "collection",
           "settings": {
-            "collection": ""
+            "collection": "winter-collection-22-23"
           }
         },
         "product": {
           "type": "product",
           "settings": {
-            "product": "",
+            "product": "men-s-high-pile-nuptse-jacket",
             "second_image": false
           }
         },
         "collection-1": {
           "type": "collection",
           "settings": {
-            "collection": ""
+            "collection": "winter-collection-22-24"
           }
         }
       },
@@ -124,10 +134,11 @@
         "collection-1"
       ],
       "settings": {
-        "heading": "Multimedia collage",
+        "heading": "Explore The North Face",
         "heading_size": "h2",
         "desktop_layout": "left",
         "mobile_layout": "collage",
+        "card_styles": "product-card-wrapper",
         "color_scheme": "background-1",
         "padding_top": 36,
         "padding_bottom": 36
@@ -137,8 +148,9 @@
       "type": "video",
       "settings": {
         "heading": "",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "heading_size": "h1",
+        "cover_image": "shopify:\/\/shop_images\/339a0e1449b6b4062056bc300d87e893_XL.jpg",
+        "video_url": "https:\/\/www.youtube.com\/watch?v=PUo1JnhGsQU&ab_channel=TheNorthFace",
         "description": "",
         "full_width": false,
         "color_scheme": "background-1",
@@ -148,6 +160,7 @@
     },
     "multicolumn": {
       "type": "multicolumn",
+      "disabled": true,
       "blocks": {
         "column1": {
           "type": "column",
@@ -192,11 +205,65 @@
         "background_style": "none",
         "button_label": "",
         "button_link": "",
-        "swipe_on_mobile": false,
         "color_scheme": "background-1",
         "columns_mobile": "1",
+        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "a2fccb03-0f3e-4c30-a1be-6426e1227212": {
+      "type": "slideshow",
+      "blocks": {
+        "template--17111107666239__a2fccb03-0f3e-4c30-a1be-6426e1227212-167006761883dd2b02-0": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/221115-all-mountain-snow-hp-1-item-text-off-img-d.jpg",
+            "heading": "All Mountain. All you.",
+            "heading_size": "h1",
+            "subheading": "Meet the All Mountain Collection. Performance-driven snow gear designed with you in mind.",
+            "button_label": "See our collections",
+            "link": "shopify:\/\/collections",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "template--17111107666239__a2fccb03-0f3e-4c30-a1be-6426e1227212-167006761883dd2b02-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/339a0e1449b6b4062056bc300d87e893_XL.jpg",
+            "heading": "A history worth repeating.",
+            "heading_size": "h1",
+            "subheading": "The original Nuptse is back—stitch for stitch in honor of its ’92 origins.",
+            "button_label": "See Nuptse '92",
+            "link": "shopify:\/\/products\/men-s-high-pile-nuptse-jacket",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--17111107666239__a2fccb03-0f3e-4c30-a1be-6426e1227212-167006761883dd2b02-0",
+        "template--17111107666239__a2fccb03-0f3e-4c30-a1be-6426e1227212-167006761883dd2b02-1"
+      ],
+      "settings": {
+        "layout": "grid",
+        "slide_height": "adapt_image",
+        "slider_visual": "dots",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
       }
     }
   },
@@ -206,6 +273,7 @@
     "featured_collection",
     "collage",
     "video",
-    "multicolumn"
+    "multicolumn",
+    "a2fccb03-0f3e-4c30-a1be-6426e1227212"
   ]
 }
