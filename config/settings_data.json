@@ -215,6 +215,18 @@
         "settings": {
           "color_scheme": "background-1"
         }
+      },
+      "alternate-header": {
+        "type": "alternate-header",
+        "settings": {
+          "header_logo_id": "shopify:\/\/shop_images\/logo.png",
+          "header_menu_id": "header-menu"
+        }
+      },
+      "alternate-footer": {
+        "type": "alternate-footer",
+        "settings": {
+        }
       }
     },
     "content_for_index": [
