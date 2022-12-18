@@ -1,7 +1,13 @@
 <header class="header">
-  <a href="#main" class="skip-link"> Skip to content </a>
+  <a href="#main" class="skip-link">
+    Skip to content
+  </a>
   <div class="container header__container">
-    <button class="burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="burger_menu">
+    <button
+      class="burger"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="burger_menu">
       <svg
         class="burger__icon burger__icon--menu"
         aria-hidden="true"
@@ -9,9 +15,8 @@
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         width="24px"
-        height="24px"
-      >
-        <path d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"/>
+        height="24px">
+        <path d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z" />
       </svg>
       <span class="burger__text burger__text--menu">Menu</span>
       <svg
@@ -21,73 +26,73 @@
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         width="24px"
-        height="24px"
-      >
-        <path d="M 4.9902344 3.9902344 A 1.0001 1.0001 0 0 0 4.2929688 5.7070312 L 10.585938 12 L 4.2929688 18.292969 A 1.0001 1.0001 0 1 0 5.7070312 19.707031 L 12 13.414062 L 18.292969 19.707031 A 1.0001 1.0001 0 1 0 19.707031 18.292969 L 13.414062 12 L 19.707031 5.7070312 A 1.0001 1.0001 0 0 0 18.980469 3.9902344 A 1.0001 1.0001 0 0 0 18.292969 4.2929688 L 12 10.585938 L 5.7070312 4.2929688 A 1.0001 1.0001 0 0 0 4.9902344 3.9902344 z"/>
+        height="24px">
+        <path d="M 4.9902344 3.9902344 A 1.0001 1.0001 0 0 0 4.2929688 5.7070312 L 10.585938 12 L 4.2929688 18.292969 A 1.0001 1.0001 0 1 0 5.7070312 19.707031 L 12 13.414062 L 18.292969 19.707031 A 1.0001 1.0001 0 1 0 19.707031 18.292969 L 13.414062 12 L 19.707031 5.7070312 A 1.0001 1.0001 0 0 0 18.980469 3.9902344 A 1.0001 1.0001 0 0 0 18.292969 4.2929688 L 12 10.585938 L 5.7070312 4.2929688 A 1.0001 1.0001 0 0 0 4.9902344 3.9902344 z" />
       </svg>
       <span class="burger__text burger__text--close">Close</span>
     </button>
-    <nav class="main-nav header__nav" aria-label="Main">
-      <ul class="offset-x offset-y main-nav__list" role="list">
-        <li class="main-nav__item">
-          <a class="link main-nav__link" href="#" aria-current="page">Women</a>
-        </li>
-        <li class="main-nav__item">
-          <a class="link main-nav__link" href="#">Men</a>
-        </li>
-        <li class="main-nav__item">
-          <a class="link main-nav__link" href="#">Kids</a>
-        </li>
-        <li class="main-nav__item">
-          <a class="link main-nav__link" href="#">Company</a>
-        </li>
-      </ul>
-    </nav>
+    {% assign menu = section.settings.header_menu_id %}
+    {% if menu.links.size > 0 %}
+      <nav class="main-nav header__nav" aria-label="Main">
+        <ul class="offset-x offset-y main-nav__list" role="list">
+          {% for link in menu.links %}
+            <li class="main-nav__item">
+              <a class="link main-nav__link" href="{{ link.url }}">
+                {{ link.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
     <a class="logo header__logo" href="#">
       <span class="visually-hidden">Susparsa home</span>
-      <img class="header__logo-img" width="139" height="32" src="{{ 'logo.svg' | asset_url }}" alt="">
+      {% if section.settings.header_logo_id != blank %}
+        {{ section.settings.header_logo_id | image_url: width: 139, height: 32 | image_tag: class: 'header__logo-img', alt: '' }}
+      {% endif %}
     </a>
     <nav class="main-nav header__nav" aria-label="Meta & Search">
       <ul class="offset-x offset-y main-nav__list" role="list">
         <li class="main-nav__item">
-          <a class="link main-nav__link" href="#">Account</a>
+          <a class="link main-nav__link" href="{{ routes.account_url }}">Account</a>
         </li>
         <li class="main-nav__item">
-          <a class="link main-nav__link" href="#">Search</a>
+          <a class="link main-nav__link" href="{{ routes.search_url }}">Search</a>
         </li>
         <li class="main-nav__item">
-          <a class="link main-nav__link" href="#"> Cart (<span>0</span>) </a>
+          <a class="link main-nav__link" href="{{ routes.cart_url }}">
+            Cart (<span>0</span>)
+          </a>
         </li>
       </ul>
     </nav>
   </div>
   <div id="burger_menu" class="offset-y burger-menu">
-    <nav class="main-nav" aria-label="Main">
-      <ul class="offset-x offset-y burger-menu__list main-nav__list" role="list">
-        <li class="main-nav__item">
-          <a class="main-nav__link" href="#">Women</a>
-        </li>
-        <li class="main-nav__item">
-          <a class="main-nav__link" href="#">Men</a>
-        </li>
-        <li class="main-nav__item">
-          <a class="main-nav__link" href="#">Kids</a>
-        </li>
-        <li class="main-nav__item">
-          <a class="main-nav__link" href="#">Company</a>
-        </li>
-      </ul>
-    </nav>
+    {% if menu.links.size > 0 %}
+      <nav class="main-nav" aria-label="Main">
+        <ul class="offset-x offset-y burger-menu__list main-nav__list" role="list">
+          {% for link in menu.links %}
+            <li class="main-nav__item">
+              <a class="link main-nav__link" href="{{ link.url }}">
+                {{ link.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
     <nav class="main-nav" aria-label="Meta & Search">
       <ul class="offset-x offset-y burger-menu__list main-nav__list" role="list">
         <li class="main-nav__item">
-          <a class="main-nav__link" href="#">Account</a>
+          <a class="main-nav__link" href="{{ routes.account_url }}">Account</a>
         </li>
         <li class="main-nav__item">
-          <a class="main-nav__link" href="#">Search</a>
+          <a class="main-nav__link" href="{{ routes.search_url }}">Search</a>
         </li>
         <li class="main-nav__item">
-          <a class="main-nav__link" href="#"> Cart (<span>0</span>) </a>
+          <a class="main-nav__link" href="{{ routes.cart_url }}">
+            Cart (<span>0</span>)
+          </a>
         </li>
       </ul>
     </nav>
@@ -95,19 +100,18 @@
 </header>
 
 {% schema %}
-{
-  "name": "Header",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "header_logo_id",
-      "label": "Logo"
-    },
-    {
-      "type": "link_list",
-      "id": "header_menu_id",
-      "label": "Menu"
-    }
-  ]
-}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "header_logo_id",
+        "label": "Logo"
+      }, {
+        "type": "link_list",
+        "id": "header_menu_id",
+        "label": "Menu"
+      }
+    ]
+  }
 {% endschema %}
