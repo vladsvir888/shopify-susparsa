@@ -234,10 +234,26 @@
               "footer_about_fb_link_id": "https:\/\/www.facebook.com\/",
               "footer_about_instagram_link_id": "https:\/\/www.instagram.com\/"
             }
+          },
+          "be65b9d3-8375-410e-938b-c0b27599540f": {
+            "type": "Menu",
+            "settings": {
+              "footer_menu_heading_id": "USEFUL LINKS",
+              "footer_menu_id": "useful-links-menu"
+            }
+          },
+          "0757dfb1-7780-40df-8ed0-8a5e914e32fa": {
+            "type": "Menu",
+            "settings": {
+              "footer_menu_heading_id": "COMPANY",
+              "footer_menu_id": "company-menu"
+            }
           }
         },
         "block_order": [
-          "605fd777-1040-45b8-9012-162d6406bd78"
+          "605fd777-1040-45b8-9012-162d6406bd78",
+          "be65b9d3-8375-410e-938b-c0b27599540f",
+          "0757dfb1-7780-40df-8ed0-8a5e914e32fa"
         ],
         "settings": {
         }
