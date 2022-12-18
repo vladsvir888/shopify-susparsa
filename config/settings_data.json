@@ -225,6 +225,20 @@
       },
       "alternate-footer": {
         "type": "alternate-footer",
+        "blocks": {
+          "605fd777-1040-45b8-9012-162d6406bd78": {
+            "type": "About",
+            "settings": {
+              "footer_about_heading_id": "ABOUT",
+              "footer_about_text_id": "<p>Susparsa Store<\/p><p>Geneva, Switzerland<\/p>",
+              "footer_about_fb_link_id": "https:\/\/www.facebook.com\/",
+              "footer_about_instagram_link_id": "https:\/\/www.instagram.com\/"
+            }
+          }
+        },
+        "block_order": [
+          "605fd777-1040-45b8-9012-162d6406bd78"
+        ],
         "settings": {
         }
       }
