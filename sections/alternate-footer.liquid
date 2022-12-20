@@ -12,7 +12,9 @@
               {% endif %}
               <dd class="footer__descr">
                 {% if block.settings.footer_about_text_id != blank %}
-                  {{ block.settings.footer_about_text_id }}
+                  <div class="footer__descr-wrap">
+                    {{ block.settings.footer_about_text_id }}
+                  </div>
                 {% endif %}
                 <span
                   class="visually-hidden"

@@ -894,6 +894,10 @@ body {
     line-height: 2;
 }
 
+.footer__descr-wrap {
+    line-height: 2;
+}
+
 .footer__socials {
     margin-top: 1rem;
 }

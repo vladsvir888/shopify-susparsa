@@ -45,7 +45,7 @@ class Accordion {
 
     toggle(element) {
         const accordionContent = element.lastElementChild;
-        const accordionBtn = element.firstElementChild;
+        const accordionBtn = element.firstElementChild.firstElementChild;
 
         if (!accordionContent.style.maxHeight) {
             element.classList.add(Accordion.classes.accordion_item_active);

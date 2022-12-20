@@ -54,14 +54,18 @@
     <nav class="main-nav header__nav" aria-label="Meta & Search">
       <ul class="offset-x offset-y main-nav__list" role="list">
         <li class="main-nav__item">
-          <a class="link main-nav__link" href="{{ routes.account_url }}">Account</a>
+          <a class="link main-nav__link" href="{{ routes.account_url }}">
+            {{ 'customer.account.title' | t }}
+          </a>
         </li>
         <li class="main-nav__item">
-          <a class="link main-nav__link" href="{{ routes.search_url }}">Search</a>
+          <a class="link main-nav__link" href="{{ routes.search_url }}">
+            {{ 'general.search.search' | t }}
+          </a>
         </li>
         <li class="main-nav__item">
           <a class="link main-nav__link" href="{{ routes.cart_url }}">
-            Cart (<span>0</span>)
+            {{ 'templates.cart.cart' | t }} (<span>0</span>)
           </a>
         </li>
       </ul>
@@ -84,14 +88,18 @@
     <nav class="main-nav" aria-label="Meta & Search">
       <ul class="offset-x offset-y burger-menu__list main-nav__list" role="list">
         <li class="main-nav__item">
-          <a class="main-nav__link" href="{{ routes.account_url }}">Account</a>
+          <a class="main-nav__link" href="{{ routes.account_url }}">
+            {{ 'customer.account.title' | t }}
+          </a>
         </li>
         <li class="main-nav__item">
-          <a class="main-nav__link" href="{{ routes.search_url }}">Search</a>
+          <a class="main-nav__link" href="{{ routes.search_url }}">
+            {{ 'general.search.search' | t }}
+          </a>
         </li>
         <li class="main-nav__item">
           <a class="main-nav__link" href="{{ routes.cart_url }}">
-            Cart (<span>0</span>)
+            {{ 'templates.cart.cart' | t }} (<span>0</span>)
           </a>
         </li>
       </ul>

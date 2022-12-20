@@ -1,0 +1,45 @@
+<article class="advice-card">
+  <div class="advice-card__inner">
+    {{ product.featured_image | image_url: width: 248, height: 368 | image_tag: class: 'advice-card__img' }}
+    <ul class="labels advice-card__labels" role="list">
+      {% unless product.available %}
+        <li class="labels__item">Sold out</li>
+      {% endunless %}
+    </ul>
+  </div>
+  <div class="advice-card__content">
+    {% if product.title != blank %}
+      <h3 class="advice-card__title">
+        <a class="advice-card__title-link" href="#">
+          {{ product.title }}
+        </a>
+      </h3>
+    {% endif %}
+    <ul class="offset-x advice-card__list" role="list">
+      <li class="advice-card__item" style="--color: #c88252;">
+        <a class="advice-card__link" href="#">
+          <span class="visually-hidden">Brown</span>
+        </a>
+      </li>
+      <li class="advice-card__item" style="--color: #f8cab1;">
+        <a class="advice-card__link" href="#">
+          <span class="visually-hidden">Orange</span>
+        </a>
+      </li>
+      <li class="advice-card__item" style="--color: #e9a0a7;">
+        <a class="advice-card__link" href="#">
+          <span class="visually-hidden">Red</span>
+        </a>
+      </li>
+      <li class="advice-card__item" style="--color: #ba9be5;">
+        <a class="advice-card__link" href="#">
+          <span class="visually-hidden">Purple</span>
+        </a>
+      </li>
+    </ul>
+    <p class="advice-card__text">
+      <abbr title="European Monetary Unit">{{ shop.currency }}</abbr>
+      {{ product.price | money_without_currency }}
+    </p>
+  </div>
+</article>
