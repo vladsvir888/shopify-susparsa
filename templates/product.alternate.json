@@ -37,8 +37,8 @@
     "alternate-product-recommendations": {
       "type": "alternate-product-recommendations",
       "settings": {
-        "product_recommendations_id": "Heading",
-        "product_recommendations_collection_id": "",
+        "product_recommendations_id": "You may also like",
+        "product_recommendations_collection_id": "spring-summer-2023",
         "product_recommendations_range_id": 4
       }
     }
