@@ -61,6 +61,18 @@
     "button_label": "Subscribe"
   },
   "accessibility": {
+    "main_nav": "Main",
+    "logo_visually_hidden": "Susparsa home",
+    "meta_and_search_nav": "Meta & Search",
+    "burger": "Toggle menu",
+    "burger_text_menu": "Menu",
+    "burger_text_close": "Close",
+    "breadcrumb": "Breadcrumb",
+    "home_link_text": "Home",
+    "social_media_links_text": "Social media links",
+    "facebook_text": "Facebook",
+    "instagram_text": "Instagram",
+    "copyright_text": "Susparsa 2022",
     "skip_to_text": "Skip to content",
     "skip_to_product_info": "Skip to product information",
     "close": "Close",

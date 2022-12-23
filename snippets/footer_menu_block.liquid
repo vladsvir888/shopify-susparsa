@@ -1,0 +1,15 @@
+<dl class="footer__section">
+  <dt class="footer__title">{{ block.settings.footer_menu_heading }}</dt>
+  {% assign menu = block.settings.footer_menu %}
+  {% if menu.links.size > 0 %}
+    <dd class="footer__descr">
+      <ul class="footer__list" role="list">
+        {% for link in menu.links %}
+          <li class="footer__item">
+            <a class="link footer__link" href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </dd>
+  {% endif %}
+</dl>

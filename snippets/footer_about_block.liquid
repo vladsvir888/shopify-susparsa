@@ -1,0 +1,43 @@
+<dl class="footer__section">
+  <dt class="footer__title">
+    {{ block.settings.footer_about_heading }}
+  </dt>
+  <dd class="footer__descr">
+    {% if block.settings.footer_about_text != blank %}
+      <div class="footer__descr-wrap">
+        {{ block.settings.footer_about_text }}
+      </div>
+    {% endif %}
+    <span
+      class="visually-hidden"
+      aria-hidden="true"
+      id="social_media_footer">{{ 'accessibility.social_media_links_text' | t }}</span>
+    <ul
+      class="offset-x footer__socials socials"
+      aria-labelledby="social_media_footer"
+      role="list">
+      {% if block.settings.footer_about_fb_link != blank %}
+        <li class="socials__item">
+          <a
+            class="socials__link"
+            href="{{ block.settings.footer_about_fb_link }}"
+            target="_blank"
+            aria-label="{{ 'accessibility.facebook_text' | t }}">
+            {% render 'icon', icon: "facebook" %}
+          </a>
+        </li>
+      {% endif %}
+      {% if block.settings.footer_about_instagram_link != blank %}
+        <li class="socials__item">
+          <a
+            class="socials__link"
+            href="{{ block.settings.footer_about_instagram_link }}"
+            target="_blank"
+            aria-label="{{ 'accessibility.instagram_text' | t }}">
+            {% render 'icon', icon: "instagram" %}
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  </dd>
+</dl>
