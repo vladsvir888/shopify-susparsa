@@ -1,11 +1,11 @@
 <dl class="footer__section">
   <dt class="footer__title">
-    {{ block.settings.footer_about_heading }}
+    {{ block.settings.heading }}
   </dt>
   <dd class="footer__descr">
-    {% if block.settings.footer_about_text != blank %}
+    {% if block.settings.text != blank %}
       <div class="footer__descr-wrap">
-        {{ block.settings.footer_about_text }}
+        {{ block.settings.text }}
       </div>
     {% endif %}
     <span
@@ -16,22 +16,22 @@
       class="offset-x footer__socials socials"
       aria-labelledby="social_media_footer"
       role="list">
-      {% if block.settings.footer_about_fb_link != blank %}
+      {% if block.settings.fb_link != blank %}
         <li class="socials__item">
           <a
             class="socials__link"
-            href="{{ block.settings.footer_about_fb_link }}"
+            href="{{ block.settings.fb_link }}"
             target="_blank"
             aria-label="{{ 'accessibility.facebook_text' | t }}">
             {% render 'icon', icon: "facebook" %}
           </a>
         </li>
       {% endif %}
-      {% if block.settings.footer_about_instagram_link != blank %}
+      {% if block.settings.instagram_link != blank %}
         <li class="socials__item">
           <a
             class="socials__link"
-            href="{{ block.settings.footer_about_instagram_link }}"
+            href="{{ block.settings.instagram_link }}"
             target="_blank"
             aria-label="{{ 'accessibility.instagram_text' | t }}">
             {% render 'icon', icon: "instagram" %}

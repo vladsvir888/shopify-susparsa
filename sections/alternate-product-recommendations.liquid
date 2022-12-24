@@ -1,25 +1,18 @@
 <aside aria-labelledby="advice_title" class="advice main__advice">
   <div class="container">
-    {% if section.settings.product_recommendations_id != blank %}
+    {% if section.settings.title != blank %}
       <h2 id="advice_title" class="advice__title">
-        {{ section.settings.product_recommendations_id }}
+        {{ section.settings.title }}
       </h2>
     {% endif %}
 
-    {% assign selected_collection = section.settings.product_recommendations_collection_id %}
+    {% assign selected_collection = section.settings.collection %}
     {% if selected_collection != blank and selected_collection.products.size > 0 %}
       <ul class="advice__list" role="list">
-        {% for product in selected_collection.products limit: section.settings.product_recommendations_range_id %}
+        {% for product in selected_collection.products limit: section.settings.limit %}
           <li class="advice__item">
             {% render 'alternate-product-card', product: product %}
           </li>
-          {% comment %}
-          {% if section.settings.product_recommendations_range_id >= forloop.index %}
-          <li class="advice__item">
-          {% render 'alternate-product-card', product: product %}
-          </li>
-          {% endif %}
-          {% endcomment %}
         {% endfor %}
       </ul>
     {% endif %}
@@ -32,16 +25,16 @@
     "settings": [
       {
         "type": "text",
-        "id": "product_recommendations_id",
+        "id": "title",
         "label": "Heading",
         "default": "Heading"
       }, {
         "type": "collection",
-        "id": "product_recommendations_collection_id",
+        "id": "collection",
         "label": "Collection"
       }, {
         "type": "range",
-        "id": "product_recommendations_range_id",
+        "id": "limit",
         "min": 3,
         "max": 6,
         "step": 1,

@@ -7,26 +7,25 @@
     {% endif %}
     <div class="product-card__content">
       <header class="offset-y product-card__header">
-        {% if product.title != blank %}
-          <h1 id="main_title" class="product-card__title">{{ product.title }}</h1>
-        {% endif %}
+        <h1 id="main_title" class="product-card__title">{{ product.title }}</h1>
         {% if product.price != blank %}
           <p class="product-card__price">
-            <abbr title="European Monetary Unit">{{ shop.currency }}</abbr>
+            <abbr title="{{ 'accessibility.euro_abbr' | t }}">{{ shop.currency }}</abbr>
             {{ product.price | money_without_currency }}
           </p>
         {% endif %}
         <p class="product-card__note">
-          <small>Tax included</small>
+          <small>
+            {{ 'general.tax_included' | t }}
+          </small>
         </p>
       </header>
-      <form
-        class="form product-card__form"
-        method="post"
-        action="/">
+      {% form 'product', product, class: "form product-card__form" %}
         <div class="offset-y form__fieldset-wrap">
           <fieldset class="form__fieldset">
-            <legend class="form__caption">Size</legend>
+            <legend class="form__caption">
+              Size
+            </legend>
             <div class="offset-x form__inner">
               <div class="radio-btn">
                 <input
@@ -35,7 +34,9 @@
                   type="radio"
                   name="size"
                   value="XS">
-                <label class="radio-btn__label" for="size_xs">XS</label>
+                <label class="radio-btn__label" for="size_xs">
+                  XS
+                </label>
               </div>
               <div class="radio-btn">
                 <input
@@ -45,7 +46,9 @@
                   name="size"
                   value="S"
                   checked>
-                <label class="radio-btn__label" for="size_s">S</label>
+                <label class="radio-btn__label" for="size_s">
+                  S
+                </label>
               </div>
               <div class="radio-btn">
                 <input
@@ -54,7 +57,9 @@
                   type="radio"
                   name="size"
                   value="M">
-                <label class="radio-btn__label" for="size_m">M</label>
+                <label class="radio-btn__label" for="size_m">
+                  M
+                </label>
               </div>
               <div class="radio-btn">
                 <input
@@ -63,7 +68,9 @@
                   type="radio"
                   name="size"
                   value="L">
-                <label class="radio-btn__label" for="size_l">L</label>
+                <label class="radio-btn__label" for="size_l">
+                  L
+                </label>
               </div>
               <div class="radio-btn">
                 <input
@@ -72,7 +79,9 @@
                   type="radio"
                   name="size"
                   value="XL">
-                <label class="radio-btn__label" for="size_xl">XL</label>
+                <label class="radio-btn__label" for="size_xl">
+                  XL
+                </label>
               </div>
               <div class="radio-btn">
                 <input
@@ -82,13 +91,16 @@
                   name="size"
                   value="2XL"
                   disabled>
-                <label class="radio-btn__label" for="size_2xl">2XL</label>
+                <label class="radio-btn__label" for="size_2xl">
+                  2XL
+                </label>
               </div>
             </div>
           </fieldset>
           <fieldset class="form__fieldset">
-            <legend class="form__caption">Color -
-              <span aria-hidden="true">White</span>
+            <legend class="form__caption">
+              Color
+              <span aria-hidden="true">- White</span>
             </legend>
             <div class="offset-x form__inner">
               <div class="radio-btn radio-btn--color">
@@ -181,26 +193,15 @@
             </div>
           </fieldset>
           <fieldset class="form__fieldset">
-            <legend class="form__caption">Quantity</legend>
+            <legend class="form__caption">
+              {{ 'general.counter.name' | t }}
+            </legend>
             <div class="counter">
               <button
                 class="counter__btn counter__btn--minus"
                 type="button"
-                aria-label="Decrease counter">
-                <svg
-                  class="counter__icon"
-                  aria-hidden="true"
-                  width="12"
-                  height="12"
-                  viewBox="0 0 12 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <line
-                    y1="6"
-                    x2="12"
-                    y2="6"
-                    stroke="#1A1F29" />
-                </svg>
+                aria-label="{{ 'general.counter.decrease_btn' | t }}">
+                {% render 'icon', icon: "minus" %}
               </button>
               <input
                 class="counter__input"
@@ -208,30 +209,12 @@
                 name="quantity"
                 inputmode="numeric"
                 value="1"
-                aria-label="Quantity">
+                aria-label="{{ 'general.counter.input' | t }}">
               <button
                 class="counter__btn counter__btn--plus"
                 type="button"
-                aria-label="Increase counter">
-                <svg
-                  class="counter__icon"
-                  aria-hidden="true"
-                  width="12"
-                  height="12"
-                  viewBox="0 0 12 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <line
-                    x1="6"
-                    x2="6"
-                    y2="12"
-                    stroke="#1A1F29" />
-                  <line
-                    y1="6"
-                    x2="12"
-                    y2="6"
-                    stroke="#1A1F29" />
-                </svg>
+                aria-label="{{ 'general.counter.increase_btn' | t }}">
+                {% render 'icon', icon: "plus" %}
               </button>
             </div>
           </fieldset>
@@ -249,10 +232,10 @@
             name="action"
             value="quick-buy"
             type="submit">
-            Buy it now
+            {{ 'products.product.buy_it_now' | t }}
           </button>
         </div>
-      </form>
+      {% endform %}
       {% if product.description != blank %}
         <footer class="offset-y product-card__footer">
           {{ product.description }}
@@ -268,14 +251,14 @@
                 class="accordion__btn"
                 aria-expanded="false"
                 aria-controls="collapse_{{ block.id }}">
-                {{ block.settings.accordeon_heading_id }}
+                {{ block.settings.heading }}
               </button>
             </h2>
             <section
               id="collapse_{{ block.id }}"
               class="accordion__content"
               aria-labelledby="accordion_heading_{{ block.id }}">
-              {{ block.settings.accordeon_text_id }}
+              {{ block.settings.text }}
             </section>
           </div>
         {% endfor %}
@@ -291,17 +274,17 @@
     "templates": ["product"],
     "blocks": [
       {
-        "type": "Accordeon",
+        "type": "accordeon",
         "name": "Accordeon",
         "settings": [
           {
             "type": "text",
-            "id": "accordeon_heading_id",
+            "id": "heading",
             "label": "Heading",
             "default": "Heading"
           }, {
             "type": "richtext",
-            "id": "accordeon_text_id",
+            "id": "text",
             "label": "Text"
           }
         ]

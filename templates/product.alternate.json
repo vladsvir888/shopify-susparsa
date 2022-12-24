@@ -5,24 +5,24 @@
       "type": "alternate-main-product",
       "blocks": {
         "0aa47030-2aba-4529-b654-73b0d22d6920": {
-          "type": "Accordeon",
+          "type": "accordeon",
           "settings": {
-            "accordeon_heading_id": "Sizing & Fit",
-            "accordeon_text_id": "<p>Olga is 175cm, she is wearing a size S.<\/p>"
+            "heading": "Sizing & Fit",
+            "text": "<p>Olga is 175cm, she is wearing a size S.<\/p>"
           }
         },
         "ace014e0-658e-40ea-849e-273d22d60029": {
-          "type": "Accordeon",
+          "type": "accordeon",
           "settings": {
-            "accordeon_heading_id": "Composition & Care",
-            "accordeon_text_id": "<p>We care for you.<\/p>"
+            "heading": "Composition & Care",
+            "text": "<p>We care for you.<\/p>"
           }
         },
         "0d2c2fb7-16bf-4a97-9fb9-1670e517555c": {
-          "type": "Accordeon",
+          "type": "accordeon",
           "settings": {
-            "accordeon_heading_id": "Delivery & Returns",
-            "accordeon_text_id": "<p>We delivery worldwide.<\/p>"
+            "heading": "Delivery & Returns",
+            "text": "<p>We delivery worldwide.<\/p>"
           }
         }
       },
@@ -37,9 +37,9 @@
     "alternate-product-recommendations": {
       "type": "alternate-product-recommendations",
       "settings": {
-        "product_recommendations_id": "You may also like",
-        "product_recommendations_collection_id": "spring-summer-2023",
-        "product_recommendations_range_id": 4
+        "title": "You may also like",
+        "collection": "spring-summer-2023",
+        "limit": 4
       }
     }
   },

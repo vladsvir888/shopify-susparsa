@@ -3,9 +3,9 @@
     {% if section.blocks.size > 0 %}
       <div class="footer__top">
         {% for block in section.blocks %}
-          {% if block.type == 'About' %}
+          {% if block.type == 'about' %}
             {% render 'footer_about_block', block: block %}
-          {% elsif block.type == 'Menu' %}
+          {% elsif block.type == 'menu' %}
             {% render 'footer_menu_block', block: block %}
           {% endif %}
         {% endfor %}
@@ -13,7 +13,7 @@
     {% endif %}
     <div class="footer__bottom">
       <p class="footer__text">
-        <small>&copy; {{ "accessibility.copyright_text" | t }}</small>
+        <small>&copy; {{ "general.copyright_text" | t }}</small>
       </p>
     </div>
   </div>
@@ -25,42 +25,42 @@
     "max_blocks": 4,
     "blocks": [
       {
-        "type": "About",
+        "type": "about",
         "name": "About",
         "settings": [
           {
             "type": "text",
-            "id": "footer_about_heading",
+            "id": "heading",
             "label": "Heading",
             "default": "Heading"
           }, {
             "type": "richtext",
-            "id": "footer_about_text",
+            "id": "text",
             "label": "Text"
           }, {
             "type": "text",
-            "id": "footer_about_fb_link",
+            "id": "fb_link",
             "label": "Facebook link",
             "default": "#facebook_link"
           }, {
             "type": "text",
-            "id": "footer_about_instagram_link",
+            "id": "instagram_link",
             "label": "Instagram link",
             "default": "#instagram_link"
           }
         ]
       }, {
-        "type": "Menu",
+        "type": "menu",
         "name": "Menu",
         "settings": [
           {
             "type": "text",
-            "id": "footer_menu_heading",
+            "id": "heading",
             "label": "Heading",
             "default": "Heading"
           }, {
             "type": "link_list",
-            "id": "footer_menu",
+            "id": "menu",
             "label": "Menu"
           }
         ]

@@ -53,6 +53,19 @@
       "next_slide": "Slide right",
       "previous_slide": "Slide left",
       "name": "Slider"
+    },
+    "burger": {
+      "close": "Close",
+      "menu": "Menu"
+    },
+    "home_link_text": "Home",
+    "copyright_text": "Susparsa 2022",
+    "tax_included": "Tax included",
+    "counter": {
+      "name": "Quantity",
+      "increase_btn": "Increase counter",
+      "decrease_btn": "Decrease counter",
+      "input": "Quantity"
     }
   },
   "newsletter": {
@@ -62,17 +75,14 @@
   },
   "accessibility": {
     "main_nav": "Main",
-    "logo_visually_hidden": "Susparsa home",
+    "logo": "Susparsa home",
     "meta_and_search_nav": "Meta & Search",
     "burger": "Toggle menu",
-    "burger_text_menu": "Menu",
-    "burger_text_close": "Close",
     "breadcrumb": "Breadcrumb",
-    "home_link_text": "Home",
     "social_media_links_text": "Social media links",
     "facebook_text": "Facebook",
     "instagram_text": "Instagram",
-    "copyright_text": "Susparsa 2022",
+    "euro_abbr": "European Monetary Unit",
     "skip_to_text": "Skip to content",
     "skip_to_product_info": "Skip to product information",
     "close": "Close",
@@ -117,6 +127,7 @@
   "products": {
     "product": {
       "add_to_cart": "Add to cart",
+      "buy_it_now": "Buy it now",
       "choose_options": "Choose options",
       "choose_product_options": "Choose options for {{ product_name }}",
       "description": "Description",

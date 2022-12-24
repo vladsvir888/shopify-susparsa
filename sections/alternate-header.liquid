@@ -9,11 +9,11 @@
       aria-expanded="false"
       aria-controls="burger_menu">
       {% render 'icon', icon: "menu" %}
-      <span class="burger__text burger__text--menu">{{ "accessibility.burger_text_menu" | t }}</span>
+      <span class="burger__text burger__text--menu">{{ "general.burger.menu" | t }}</span>
       {% render 'icon', icon: "close" %}
-      <span class="burger__text burger__text--close">{{ "accessibility.burger_text_close" | t }}</span>
+      <span class="burger__text burger__text--close">{{ "general.burger.close" | t }}</span>
     </button>
-    {% assign menu = section.settings.header_menu %}
+    {% assign menu = section.settings.menu %}
     {% if menu.links.size > 0 %}
       <nav class="main-nav header__nav" aria-label="{{ "accessibility.main_nav" | t }}">
         <ul class="offset-x offset-y main-nav__list" role="list">
@@ -28,8 +28,8 @@
       </nav>
     {% endif %}
     {% if section.settings.logo_link != blank %}
-      <a class="logo header__logo" href="#">
-        <span class="visually-hidden">{{ "accessibility.logo_visually_hidden" | t }}</span>
+      <a class="logo header__logo" href="{{ shop.url }}">
+        <span class="visually-hidden">{{ "accessibility.logo" | t }}</span>
         <img
           class="header__logo-img"
           width="139"
@@ -37,10 +37,10 @@
           src="{{ section.settings.logo_link }}"
           alt="">
       </a>
-    {% elsif section.settings.header_logo != blank %}
-      <a class="logo header__logo" href="#">
-        <span class="visually-hidden">{{ "accessibility.logo_visually_hidden" | t }}</span>
-        {{ section.settings.header_logo | image_url: width: 139, height: 32 | image_tag: class: 'header__logo-img', alt: '' }}
+    {% elsif section.settings.logo != blank %}
+      <a class="logo header__logo" href="{{ shop.url }}">
+        <span class="visually-hidden">{{ "accessibility.logo" | t }}</span>
+        {{ section.settings.logo | image_url: width: 139, height: 32 | image_tag: class: 'header__logo-img', alt: '' }}
       </a>
     {% endif %}
     <nav class="main-nav header__nav" aria-label="{{ "accessibility.meta_and_search_nav" | t }}">
@@ -105,11 +105,11 @@
     "settings": [
       {
         "type": "image_picker",
-        "id": "header_logo",
+        "id": "logo",
         "label": "Logo"
       }, {
         "type": "link_list",
-        "id": "header_menu",
+        "id": "menu",
         "label": "Menu"
       }, {
         "type": "url",
