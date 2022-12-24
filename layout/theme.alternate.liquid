@@ -5,6 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy a unisex basic t-shirt - Susparsa</title>
+
+    {% style %}
+      @font-face {
+        font-family: 'Avenir';
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+        src: url("{{ 'AvenirNextRoundedStd-Reg.woff2' | asset_url }}") format("woff2");
+      }
+
+      @font-face {
+        font-family: 'Avenir';
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+        src: url("{{ 'AvenirNextRoundedStd-Med.woff2' | asset_url }}") format("woff2");
+      }
+
+      @font-face {
+        font-family: 'Avenir';
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+        src: url("{{ 'AvenirNextRoundedStd-Demi.woff2' | asset_url }}") format("woff2");
+      }
+    {% endstyle %}
+
     <link rel="stylesheet" href="{{ 'index.css' | asset_url }}">
 
     {{ content_for_header }}
@@ -12,7 +39,11 @@
   <body>
     {% section 'alternate-header' %}
     {% render 'alternate-breadcrumbs' %}
-    <main id="main" class="main" tabindex="-1" aria-labelledby="main_title">
+    <main
+      id="main"
+      class="main"
+      tabindex="-1"
+      aria-labelledby="main_title">
       {{ content_for_layout }}
     </main>
     {% section 'alternate-footer' %}

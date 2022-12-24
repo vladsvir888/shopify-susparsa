@@ -28,32 +28,6 @@
     --lts3: 0.0625rem;
 }
 
-/* fonts */
-@font-face {
-    font-family: 'Avenir';
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-    src: url('https://cdn.shopify.com/s/files/1/0687/9805/4719/files/AvenirNextRoundedStd-Reg.woff2?v=1670441853') format('woff2');
-}
-
-@font-face {
-    font-family: 'Avenir';
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-    src: url('https://cdn.shopify.com/s/files/1/0687/9805/4719/files/AvenirNextRoundedStd-Med.woff2?v=1670441852') format('woff2');
-}
-
-@font-face {
-    font-family: 'Avenir';
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-    src: url('https://cdn.shopify.com/s/files/1/0687/9805/4719/files/AvenirNextRoundedStd-Demi.woff2?v=1670441852') format('woff2');
-}
-/* /.fonts */
-
 html {
     height: 100%;
     box-sizing: border-box;
