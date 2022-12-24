@@ -220,7 +220,8 @@
         "type": "alternate-header",
         "settings": {
           "header_logo": "shopify:\/\/shop_images\/logo.png",
-          "header_menu": "header-menu"
+          "header_menu": "header-menu",
+          "logo_link": "https:\/\/cdn.shopify.com\/s\/files\/1\/0687\/9805\/4719\/files\/logo.svg?v=1671828478"
         }
       },
       "alternate-footer": {
