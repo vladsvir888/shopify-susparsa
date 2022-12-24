@@ -239,14 +239,14 @@
           "be65b9d3-8375-410e-938b-c0b27599540f": {
             "type": "Menu",
             "settings": {
-              "footer_menu_heading": "USEFUL LINKS",
+              "footer_menu_heading": "Useful links",
               "footer_menu": "useful-links-menu"
             }
           },
           "0757dfb1-7780-40df-8ed0-8a5e914e32fa": {
             "type": "Menu",
             "settings": {
-              "footer_menu_heading": "COMPANY",
+              "footer_menu_heading": "Company",
               "footer_menu": "company-menu"
             }
           }
