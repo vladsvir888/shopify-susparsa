@@ -10,40 +10,41 @@ class Accordion {
 
     static classes = {
         accordion_btn: 'accordion__btn',
+        accordion_item: 'accordion__item',
         accordion_item_active: 'accordion__item--active'
     }
 
     constructor(element, index) {
         this.accordion = element;
 
-        this.accordion.addEventListener('click', this.onClick.bind(this));
+        this.accordion.addEventListener('click', this.toggle.bind(this));
 
         this.items = this.accordion.querySelectorAll(Accordion.selectors.accordion_item);
 
         if (this.items.length > index && index >= 0) {
-            this.toggle(this.items[index]);
+            this.updateState(this.items[index]);
         }
     }
 
-    onClick(e) {
+    toggle(e) {
         const { target } = e;
 
-        if (!target.classList.contains(Accordion.classes.accordion_btn)) return;
+        if (target.closest(Accordion.selectors.accordion_item)) {
+            const accordion = target.closest(Accordion.selectors.accordion);
 
-        const accordion = target.closest(Accordion.selectors.accordion);
-
-        const accordionItem = target.closest(Accordion.selectors.accordion_item);
-
-        const accordionItemActive = accordion.querySelector(Accordion.selectors.accordion_item_active);
-
-        if (accordionItemActive && accordionItemActive !== accordionItem) {
-            this.toggle(accordionItemActive);
+            const accordionItem = target.closest(Accordion.selectors.accordion_item);
+    
+            const accordionItemActive = accordion.querySelector(Accordion.selectors.accordion_item_active);
+    
+            if (accordionItemActive && accordionItemActive !== accordionItem) {
+                this.updateState(accordionItemActive);
+            }
+    
+            this.updateState(accordionItem);
         }
-
-        this.toggle(accordionItem);
     }
 
-    toggle(element) {
+    updateState(element) {
         const accordionContent = element.lastElementChild;
         const accordionBtn = element.firstElementChild.firstElementChild;
 
@@ -58,8 +59,6 @@ class Accordion {
         }
     }
 }
-
-document.querySelectorAll(Accordion.selectors.accordion).forEach(accordion => new Accordion(accordion, 0));
 
 // show/hide burger-menu
 const burger = () => {

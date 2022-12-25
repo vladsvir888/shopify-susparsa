@@ -1,4 +1,9 @@
-<article class="product-card main__product-card">
+<script src="{{ 'alternate-main-product.js' | asset_url }}" type="module"></script>
+
+<article
+  class="product-card main__product-card"
+  data-section-type="alternate-main-product"
+  data-section-id="{{ section.id }}">
   <div class="container product-card__container">
     {% if product.featured_image != blank %}
       <div class="product-card__img-wrap">
@@ -245,7 +250,7 @@
     {% if section.blocks.size > 0 %}
       <div class="accordion main__accordion">
         {% for block in section.blocks %}
-          <div class="accordion__item">
+          <div class="accordion__item" {{ block.shopify_attributes }}>
             <h2 id="accordion_heading_{{ block.id }}" class="accordion__heading">
               <button
                 class="accordion__btn"

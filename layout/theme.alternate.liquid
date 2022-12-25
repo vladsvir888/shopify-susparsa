@@ -35,6 +35,14 @@
     <link rel="stylesheet" href="{{ 'index.css' | asset_url }}">
 
     {{ content_for_header }}
+
+    <script src="https://unpkg.com/@shopify/theme-sections@4.1.1/dist/theme-sections.min.js" defer></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        Shopify.theme.sections.load('*');
+      });
+    </script>
   </head>
   <body>
     {% section 'alternate-header' %}
@@ -47,6 +55,7 @@
       {{ content_for_layout }}
     </main>
     {% section 'alternate-footer' %}
+
     <script src="{{ 'index.js' | asset_url }}"></script>
   </body>
 </html>
