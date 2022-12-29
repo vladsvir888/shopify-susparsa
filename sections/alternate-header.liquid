@@ -1,3 +1,5 @@
+<script src="{{ 'alternate-header.js' | asset_url }}" type="module"></script>
+
 <header class="header">
   <a href="#main" class="skip-link">
     {{ 'accessibility.skip_to_text' | t }}
@@ -57,7 +59,7 @@
         </li>
         <li class="main-nav__item">
           <a class="link main-nav__link" href="{{ routes.cart_url }}">
-            {{ 'templates.cart.cart' | t }} (<span>{{ cart.item_count }}</span>)
+            {{ 'templates.cart.cart' | t }} (<span class="main-nav__counter">{{ cart.item_count }}</span>)
           </a>
         </li>
       </ul>

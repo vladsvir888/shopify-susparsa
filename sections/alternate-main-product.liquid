@@ -25,7 +25,21 @@
           </small>
         </p>
       </header>
-      {% form 'product', product, class: "form product-card__form" %}
+      {% form 'product', product, id: "product-form", class: "form product-card__form" %}
+        <select
+          name="id"
+          id="product-variants"
+          style="margin-bottom: 1rem;">
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}" {% if product.selected_or_first_available_variant.id == variant.id %}selected{% endif %}>
+              {{ variant.title }}
+            </option>
+          {% endfor %}
+        </select>
+        <input
+          type="hidden"
+          name="sections"
+          value="alternate-header">
         <div class="offset-y form__fieldset-wrap">
           <fieldset class="form__fieldset">
             <legend class="form__caption">
@@ -227,16 +241,14 @@
         <div class="offset-y form__btn-wrap">
           <button
             class="btn btn--primary product-card__btn"
-            name="action"
             value="add"
             type="submit">
             {{ 'products.product.add_to_cart' | t }}
           </button>
           <button
             class="btn btn--secondary product-card__btn"
-            name="action"
             value="quick-buy"
-            type="submit">
+            type="button">
             {{ 'products.product.buy_it_now' | t }}
           </button>
         </div>
