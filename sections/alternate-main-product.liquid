@@ -251,6 +251,12 @@
             type="button">
             {{ 'products.product.buy_it_now' | t }}
           </button>
+          <div class="notification notification--success">
+            Product added to your cart
+          </div>
+          <div class="notification notification--error">
+            Something went wrong...
+          </div>
         </div>
       {% endform %}
       {% if product.description != blank %}

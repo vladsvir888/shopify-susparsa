@@ -432,7 +432,7 @@ body {
 }
 
 .product-card__btn {
-    width: 25.5rem;
+    /* width: 25.5rem; */
     padding: 1rem;
     transition: color var(--transition), background-color var(--transition);
 }
@@ -477,8 +477,10 @@ body {
 
 .form__btn-wrap {
     --offset-y: 0.75rem;
+    position: relative;
     display: flex;
     flex-direction: column;
+    max-width: 25.5rem;
 }
 /* /.form */
 
@@ -915,6 +917,28 @@ body {
 
 .skip-link:focus {
     transform: translateY(10%);
+}
+
+/* form-notification */
+.notification {
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translate(-50%, 0%);
+    padding: 1rem;
+    white-space: nowrap;
+    border-radius: 0.5rem;
+    color: var(--pallette-white);
+    background-color: var(--pallette-deep-koamaru);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition), transform var(--transition);
+}
+
+.notification.notification--active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -20%);
 }
 
 /* media queries */

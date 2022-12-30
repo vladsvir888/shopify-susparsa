@@ -1,28 +1,27 @@
 Shopify.theme.sections.register('alternate-main-product', {
   accordion: null,
+  form: null,
 
-  onLoad: function () {
-    this.accordion = new Accordion(this.container.querySelector(Accordion.selectors.accordion), 0);
+  showError() {
+    this.notificationError.classList.add('notification--active');
+
+    setTimeout(() => {
+      this.notificationError.classList.remove('notification--active');
+    }, 1000);
   },
 
-  onBlockSelect: function (e) {
-    if (!this.accordion) return;
+  showSuccess() {
+    this.notificationSuccess.classList.add('notification--active');
 
-    this.accordion.toggle(e);
-  }
-});
+    setTimeout(() => {
+      this.notificationSuccess.classList.remove('notification--active');
+    }, 1000);
+  },
 
-function handlerForm() {
-  const form = document.getElementById('product-form');
-
-  if (!form) return;
-
-  form.addEventListener('submit', async (e) => {
+  async fetchData(e) {
     e.preventDefault();
 
-    const {
-      target
-    } = e;
+    const { target } = e;
 
     const response = await fetch(`${target.action}.js`, {
       method: target.method,
@@ -42,11 +41,31 @@ function handlerForm() {
         bubbles: true
       });
 
-      form.dispatchEvent(event);
-    } else {
-      console.log(response.statusText);
-    }
-  });
-}
+      this.form.dispatchEvent(event);
 
-handlerForm();
+      this.showSuccess();
+    } else {
+      this.showError();
+    }
+  },
+
+  onLoad() {
+    this.accordion = new Accordion(this.container.querySelector(Accordion.selectors.accordion), 0);
+
+    this.form = this.container.querySelector('.form');
+    this.notificationSuccess = this.form.querySelector('.notification--success');
+    this.notificationError = this.form.querySelector('.notification--error');
+
+    this.form.addEventListener('submit', this.fetchData.bind(this));
+  },
+
+  onUnload() {
+    this.form.removeEventListener('submit', this.fetchData);
+  },
+
+  onBlockSelect(e) {
+    if (!this.accordion) return;
+
+    this.accordion.toggle(e);
+  }
+});

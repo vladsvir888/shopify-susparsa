@@ -1,13 +1,23 @@
-document.addEventListener('cart:added', (e) => {
-  const headerStr = e.detail.header;
+Shopify.theme.sections.register('alternate-header', {
+  onLoad: function () {
+    document.addEventListener('cart:added', this.onCartAdded.bind(this));
+  },
 
-  const parser = new DOMParser();
+  onCartAdded: function(e) {  
+    const headerStr = e.detail.header;
 
-  const doc = parser.parseFromString(headerStr, 'text/html');
+    const parser = new DOMParser();
 
-  const counter = document.querySelector('.main-nav__counter');
+    const doc = parser.parseFromString(headerStr, 'text/html');
 
-  if (!counter) return;
+    const counter = this.container.querySelector('.main-nav__counter');
 
-  counter.textContent = doc.querySelector('.main-nav__counter').textContent;
+    if (!counter) return;
+
+    counter.textContent = doc.querySelector('.main-nav__counter').textContent;
+  },
+
+  onUnload: function() {
+    document.removeEventListener('cart:added', this.onCartAdded);
+  }
 });
