@@ -2,20 +2,24 @@ Shopify.theme.sections.register('alternate-main-product', {
   accordion: null,
   form: null,
 
-  showError() {
-    this.notificationError.classList.add('notification--active');
+  showNotification(notification) {
+    const strNotification = `
+      <div class="notification" role="alert">${notification}</div>
+    `;
+
+    this.btnWrap.insertAdjacentHTML('afterbegin', strNotification);
+
+    const notificationMessage = this.btnWrap.querySelector('.notification');
+
+    if (!notificationMessage) return;
 
     setTimeout(() => {
-      this.notificationError.classList.remove('notification--active');
-    }, 1000);
-  },
+      notificationMessage.classList.add('notification--active');
 
-  showSuccess() {
-    this.notificationSuccess.classList.add('notification--active');
-
-    setTimeout(() => {
-      this.notificationSuccess.classList.remove('notification--active');
-    }, 1000);
+      setTimeout(() => {
+        notificationMessage.remove();
+      }, 1000);
+    }, 500);
   },
 
   async fetchData(e) {
@@ -43,9 +47,9 @@ Shopify.theme.sections.register('alternate-main-product', {
 
       this.form.dispatchEvent(event);
 
-      this.showSuccess();
+      this.showNotification(response.statusText);
     } else {
-      this.showError();
+      this.showNotification(response.statusText);
     }
   },
 
@@ -53,8 +57,7 @@ Shopify.theme.sections.register('alternate-main-product', {
     this.accordion = new Accordion(this.container.querySelector(Accordion.selectors.accordion), 0);
 
     this.form = this.container.querySelector('.form');
-    this.notificationSuccess = this.form.querySelector('.notification--success');
-    this.notificationError = this.form.querySelector('.notification--error');
+    this.btnWrap = this.container.querySelector('.form__btn-wrap');
 
     this.form.addEventListener('submit', this.fetchData.bind(this));
   },
