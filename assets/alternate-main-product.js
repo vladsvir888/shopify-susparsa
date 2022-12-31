@@ -35,6 +35,8 @@ Shopify.theme.sections.register('alternate-main-product', {
       body: new FormData(target)
     });
 
+    console.log(response);
+
     if (response.ok) {
       const result = await response.json();
 
