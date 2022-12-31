@@ -22,6 +22,10 @@ Shopify.theme.sections.register('alternate-main-product', {
     }, 500);
   },
 
+  isStatusText(text) {
+    return text ? true : false;
+  },
+
   async fetchData(e) {
     e.preventDefault();
 
@@ -49,9 +53,13 @@ Shopify.theme.sections.register('alternate-main-product', {
 
       this.form.dispatchEvent(event);
 
-      this.showNotification(response.statusText);
+      const isStatusText = this.isStatusText(response.statusText);
+
+      isStatusText ? this.showNotification(response.statusText) : this.showNotification('Product added to cart.');
     } else {
-      this.showNotification(response.statusText);
+      const isStatusText = this.isStatusText(response.statusText);
+
+      isStatusText ? this.showNotification(response.statusText) : this.showNotification('Something went wrong.');
     }
   },
 
