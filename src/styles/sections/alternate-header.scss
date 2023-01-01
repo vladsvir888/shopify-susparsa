@@ -1,0 +1,38 @@
+.header {
+  position: relative;
+  padding: 2.09375rem 0 2.15625rem;
+  margin-bottom: 1.08125rem;
+  color: var(--pallette-mirage);
+  border-bottom: 0.0625rem solid var(--pallette-silver);
+
+  &__container {
+    @include flex-center-between;
+    width: 100%;
+  }
+
+  &__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @include media('500', max) {
+      position: static;
+      transform: inherit;
+    }
+
+    &-img {
+      width: 8.6875rem;
+      height: 2rem;
+      flex-shrink: 0;
+    }
+  }
+
+  &__nav {
+    max-width: calc((100% - 140px) / 2);
+
+    @include media('1200', max) {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,6 @@
+<div id="burger_menu" class="offset-y burger-menu">
+  {% if menu.links.size > 0 %}
+    {% render 'main-nav', menu: menu, type: 'main' %}
+  {% endif %}
+  {% render 'main-nav', menu: menu, type: 'meta' %}
+</div>

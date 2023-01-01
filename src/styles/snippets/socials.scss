@@ -1,0 +1,13 @@
+.socials {
+  @include flex-center-y;
+
+  &__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: transform var(--transition);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

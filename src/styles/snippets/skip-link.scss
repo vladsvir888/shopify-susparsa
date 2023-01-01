@@ -1,0 +1,18 @@
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  background-color: var(--pallette-apricot-peach);
+  border-radius: 0.5rem;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform var(--transition), opacity var(--transition);
+
+  &:focus {
+    transform: translateY(10%);
+    opacity: 1;
+  }
+}

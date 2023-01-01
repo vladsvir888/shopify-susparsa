@@ -1,0 +1,82 @@
+.advice-card {
+  position: relative;
+  @include flex-center-column;
+  text-align: center;
+  color: var(--pallette-mirage);
+  transition: transform var(--transition);
+
+  &:hover {
+    transform: translateY(-0.125rem);
+  }
+
+  &__inner {
+    position: relative;
+    width: 15.5rem;
+    height: 23rem;
+    margin-bottom: 1.25rem;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin-bottom: 0.5rem;
+    font-size: inherit;
+    font-weight: 400;
+    line-height: 1;
+
+    &-link {
+      text-decoration: none;
+      color: inherit;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+
+  &__list {
+    --offset-x: 0.25rem;
+    position: relative;
+    @include flex-wrap;
+    justify-content: center;
+  }
+
+  &__item {
+    margin-bottom: 0.5rem;
+    background-color: var(--color);
+
+    &:hover {
+      outline: 0.0625rem solid var(--pallette-mirage);
+    }
+  }
+
+  &__link {
+    display: flex;
+    width: 1rem;
+    height: 1rem;
+
+    &:hover {
+      outline: 0.0625rem solid var(--pallette-mirage);
+    }
+  }
+
+  &__tags {
+    position: absolute;
+    top: 0.4rem;
+    left: 0.8rem;
+    @include flex-wrap;
+
+    > * {
+      margin: 0 0.25rem 0.25rem 0;
+    }
+  }
+}

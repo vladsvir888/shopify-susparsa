@@ -1,16 +1,18 @@
-<script src="{{ 'alternate-main-product.js' | asset_url }}" type="module"></script>
-
 <article
-  class="product-card main__product-card"
+  class="product-card"
   data-section-type="alternate-main-product"
   data-section-id="{{ section.id }}">
   <div class="container product-card__container">
     {% if product.featured_image != blank %}
       <div class="product-card__img-wrap">
+        {% render 'skip-link', href: 'product_card_content' %}
         {{ product.featured_image | image_url: width: 473, height: 707 | image_tag: class: 'product-card__img', alt: 'Girl in white unisex t-shirt.' }}
       </div>
     {% endif %}
-    <div class="product-card__content">
+    <div
+      id="product_card_content"
+      class="product-card__content"
+      tabindex="-1">
       <header class="offset-y product-card__header">
         <h1 id="main_title" class="product-card__title">{{ product.title }}</h1>
         {% if product.price != blank %}
@@ -215,27 +217,7 @@
             <legend class="form__caption">
               {{ 'general.counter.name' | t }}
             </legend>
-            <div class="counter">
-              <button
-                class="counter__btn counter__btn--minus"
-                type="button"
-                aria-label="{{ 'general.counter.decrease_btn' | t }}">
-                {% render 'icon', icon: "minus" %}
-              </button>
-              <input
-                class="counter__input"
-                type="number"
-                name="quantity"
-                inputmode="numeric"
-                value="1"
-                aria-label="{{ 'general.counter.input' | t }}">
-              <button
-                class="counter__btn counter__btn--plus"
-                type="button"
-                aria-label="{{ 'general.counter.increase_btn' | t }}">
-                {% render 'icon', icon: "plus" %}
-              </button>
-            </div>
+            {% render 'counter' %}
           </fieldset>
         </div>
         <div class="offset-y form__btn-wrap">
@@ -260,26 +242,7 @@
       {% endif %}
     </div>
     {% if section.blocks.size > 0 %}
-      <div class="accordion main__accordion">
-        {% for block in section.blocks %}
-          <div class="accordion__item" {{ block.shopify_attributes }}>
-            <h2 id="accordion_heading_{{ block.id }}" class="accordion__heading">
-              <button
-                class="accordion__btn"
-                aria-expanded="false"
-                aria-controls="collapse_{{ block.id }}">
-                {{ block.settings.heading }}
-              </button>
-            </h2>
-            <section
-              id="collapse_{{ block.id }}"
-              class="accordion__content"
-              aria-labelledby="accordion_heading_{{ block.id }}">
-              {{ block.settings.text }}
-            </section>
-          </div>
-        {% endfor %}
-      </div>
+      {% render 'accordion', section_blocks: section.blocks, class: 'main__accordion' %}
     {% endif %}
   </div>
 </article>

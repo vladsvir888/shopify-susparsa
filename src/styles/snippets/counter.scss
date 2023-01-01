@@ -1,0 +1,53 @@
+.counter {
+  display: inline-flex;
+
+  &__btn {
+    position: relative;
+    @include flex-center;
+    color: var(--pallette-shuttle-gray);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: border var(--transition);
+    text-align: center;
+    width: calc(7.5rem / 3);
+    height: 2.5rem;
+
+    &:hover {
+      border-color: var(--pallette-mirage);
+    }
+
+    &--plus {
+      border: 0.0625rem solid var(--pallette-silver);
+    }
+
+    &--minus {
+      border: 0.0625rem solid var(--pallette-silver);
+    }
+  }
+
+  &__input {
+    text-align: center;
+    width: calc(7.5rem / 3);
+    height: 2.5rem;
+    border: none;
+    border-top: 0.0625rem solid var(--pallette-silver);
+    border-bottom: 0.0625rem solid var(--pallette-silver);
+    outline: none;
+    border-radius: 0;
+    appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+      margin: 0;
+    }
+  }
+
+  &__icon {
+    width: 0.75rem;
+    height: 0.75rem;
+    flex-shrink: 0;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,7 @@
+<a href="#{{- href -}}" class="skip-link">
+  {% if href == 'main' %}
+    {{ 'accessibility.skip_to_text' | t }}
+  {% elsif href == 'product_card_content' %}
+    {{ 'accessibility.skip_to_product_info' | t }}
+  {% endif %}
+</a>

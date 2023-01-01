@@ -8,36 +8,6 @@
         {{ block.settings.text }}
       </div>
     {% endif %}
-    <span
-      class="visually-hidden"
-      aria-hidden="true"
-      id="social_media_footer">{{ 'accessibility.social_media_links_text' | t }}</span>
-    <ul
-      class="offset-x footer__socials socials"
-      aria-labelledby="social_media_footer"
-      role="list">
-      {% if block.settings.fb_link != blank %}
-        <li class="socials__item">
-          <a
-            class="socials__link"
-            href="{{ block.settings.fb_link }}"
-            target="_blank"
-            aria-label="{{ 'accessibility.facebook_text' | t }}">
-            {% render 'icon', icon: "facebook" %}
-          </a>
-        </li>
-      {% endif %}
-      {% if block.settings.instagram_link != blank %}
-        <li class="socials__item">
-          <a
-            class="socials__link"
-            href="{{ block.settings.instagram_link }}"
-            target="_blank"
-            aria-label="{{ 'accessibility.instagram_text' | t }}">
-            {% render 'icon', icon: "instagram" %}
-          </a>
-        </li>
-      {% endif %}
-    </ul>
+    {% render 'socials', class: 'footer__socials', block: block %}
   </dd>
 </dl>

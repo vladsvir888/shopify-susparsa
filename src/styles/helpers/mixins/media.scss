@@ -1,0 +1,24 @@
+$breakpoints: (
+  '500': 500px,
+  '767': 767px,
+  '1024': 1024px,
+  '1200': 1200px,
+);
+
+@mixin media($breakpoint, $type) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    @media (#{$type}-width: $breakpoint-value) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+/*
+    === Usage ===
+
+    @include media('500', max);
+*/

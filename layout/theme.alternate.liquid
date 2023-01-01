@@ -1,11 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ request.locale.iso_code }}">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy a unisex basic t-shirt - Susparsa</title>
-
+    <title>{{ page_title }}</title>
     {% style %}
       @font-face {
         font-family: 'Avenir';
@@ -31,18 +30,9 @@
         src: url("{{ 'AvenirNextRoundedStd-Demi.woff2' | asset_url }}") format("woff2");
       }
     {% endstyle %}
-
-    <link rel="stylesheet" href="{{ 'index.css' | asset_url }}">
-
+    <link rel="stylesheet" href="{{ 'theme.min.css' | asset_url }}">
+    <script src="{{ 'theme.min.js' | asset_url }}" defer></script>
     {{ content_for_header }}
-
-    <script src="https://unpkg.com/@shopify/theme-sections@4.1.1/dist/theme-sections.min.js" defer></script>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        Shopify.theme.sections.load('*');
-      });
-    </script>
   </head>
   <body>
     {% section 'alternate-header' %}
@@ -55,7 +45,5 @@
       {{ content_for_layout }}
     </main>
     {% section 'alternate-footer' %}
-
-    <script src="{{ 'index.js' | asset_url }}"></script>
   </body>
 </html>

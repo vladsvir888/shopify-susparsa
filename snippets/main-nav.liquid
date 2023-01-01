@@ -1,0 +1,33 @@
+{% if type == 'main' %}
+  <nav class="main-nav {{ class }}" aria-label="{{ "accessibility.main_nav" | t }}">
+    <ul class="offset-x offset-y main-nav__list" role="list">
+      {% for link in menu.links %}
+        <li class="main-nav__item">
+          <a class="link main-nav__link" href="{{ link.url }}">
+            {{ link.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+{% elsif type == 'meta' %}
+  <nav class="main-nav {{ class }}" aria-label="{{ "accessibility.meta_and_search_nav" | t }}">
+    <ul class="offset-x offset-y main-nav__list" role="list">
+      <li class="main-nav__item">
+        <a class="link main-nav__link" href="{{ routes.account_url }}">
+          {{ 'customer.account.title' | t }}
+        </a>
+      </li>
+      <li class="main-nav__item">
+        <a class="link main-nav__link" href="{{ routes.search_url }}">
+          {{ 'general.search.search' | t }}
+        </a>
+      </li>
+      <li class="main-nav__item">
+        <a class="link main-nav__link" href="{{ routes.cart_url }}">
+          {{ 'templates.cart.cart' | t }} (<span class="main-nav__counter">{{ cart.item_count }}</span>)
+        </a>
+      </li>
+    </ul>
+  </nav>
+{% endif %}

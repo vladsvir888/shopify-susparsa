@@ -1,36 +1,13 @@
-<script src="{{ 'alternate-header.js' | asset_url }}" type="module"></script>
-
 <header
   class="header"
   data-section-type="alternate-header"
   data-section-id="{{ section.id }}">
-  <a href="#main" class="skip-link">
-    {{ 'accessibility.skip_to_text' | t }}
-  </a>
+  {% render 'skip-link', href: 'main' %}
   <div class="container header__container">
-    <button
-      class="burger"
-      aria-label="{{ "accessibility.burger" | t }}"
-      aria-expanded="false"
-      aria-controls="burger_menu">
-      {% render 'icon', icon: "menu" %}
-      <span class="burger__text burger__text--menu">{{ "general.burger.menu" | t }}</span>
-      {% render 'icon', icon: "close" %}
-      <span class="burger__text burger__text--close">{{ "general.burger.close" | t }}</span>
-    </button>
+    {% render 'burger' %}
     {% assign menu = section.settings.menu %}
     {% if menu.links.size > 0 %}
-      <nav class="main-nav header__nav" aria-label="{{ "accessibility.main_nav" | t }}">
-        <ul class="offset-x offset-y main-nav__list" role="list">
-          {% for link in menu.links %}
-            <li class="main-nav__item">
-              <a class="link main-nav__link" href="{{ link.url }}">
-                {{ link.title }}
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      </nav>
+      {% render 'main-nav', menu: menu, class: 'header__nav', type: 'main' %}
     {% endif %}
     {% if section.settings.logo_link != blank %}
       <a class="logo header__logo" href="{{ shop.url }}">
@@ -48,60 +25,9 @@
         {{ section.settings.logo | image_url: width: 139, height: 32 | image_tag: class: 'header__logo-img', alt: '' }}
       </a>
     {% endif %}
-    <nav class="main-nav header__nav" aria-label="{{ "accessibility.meta_and_search_nav" | t }}">
-      <ul class="offset-x offset-y main-nav__list" role="list">
-        <li class="main-nav__item">
-          <a class="link main-nav__link" href="{{ routes.account_url }}">
-            {{ 'customer.account.title' | t }}
-          </a>
-        </li>
-        <li class="main-nav__item">
-          <a class="link main-nav__link" href="{{ routes.search_url }}">
-            {{ 'general.search.search' | t }}
-          </a>
-        </li>
-        <li class="main-nav__item">
-          <a class="link main-nav__link" href="{{ routes.cart_url }}">
-            {{ 'templates.cart.cart' | t }} (<span class="main-nav__counter">{{ cart.item_count }}</span>)
-          </a>
-        </li>
-      </ul>
-    </nav>
+    {% render 'main-nav', menu: menu, class: 'header__nav', type: 'meta' %}
   </div>
-  <div id="burger_menu" class="offset-y burger-menu">
-    {% if menu.links.size > 0 %}
-      <nav class="main-nav" aria-label="{{ "accessibility.main_nav" | t }}">
-        <ul class="offset-x offset-y burger-menu__list main-nav__list" role="list">
-          {% for link in menu.links %}
-            <li class="main-nav__item">
-              <a class="link main-nav__link" href="{{ link.url }}">
-                {{ link.title }}
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      </nav>
-    {% endif %}
-    <nav class="main-nav" aria-label="{{ "accessibility.meta_and_search_nav" | t }}">
-      <ul class="offset-x offset-y burger-menu__list main-nav__list" role="list">
-        <li class="main-nav__item">
-          <a class="main-nav__link" href="{{ routes.account_url }}">
-            {{ 'customer.account.title' | t }}
-          </a>
-        </li>
-        <li class="main-nav__item">
-          <a class="main-nav__link" href="{{ routes.search_url }}">
-            {{ 'general.search.search' | t }}
-          </a>
-        </li>
-        <li class="main-nav__item">
-          <a class="main-nav__link" href="{{ routes.cart_url }}">
-            {{ 'templates.cart.cart' | t }} (<span>{{ cart.item_count }}</span>)
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+  {% render 'burger-menu', menu: menu %}
 </header>
 
 {% schema %}

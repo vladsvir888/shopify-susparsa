@@ -1,9 +1,9 @@
 <article class="advice-card">
   <div class="advice-card__inner">
     {{ product.featured_image | image_url: width: 248, height: 368 | image_tag: class: 'advice-card__img' }}
-    <ul class="labels advice-card__labels" role="list">
+    <ul class="advice-card__tags" role="list">
       {% unless product.available %}
-        <li class="labels__item">{{ 'products.product.sold_out' | t }}</li>
+        {% render 'tag', text: 'products.product.sold_out' %}
       {% endunless %}
     </ul>
   </div>

@@ -1,0 +1,50 @@
+.burger {
+  $this: &;
+  display: none;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  @include media('1200', max) {
+    @include flex-center-y;
+  }
+
+  &__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.3rem;
+
+    &--close {
+      display: none;
+    }
+  }
+
+  &__text {
+    &--close {
+      display: none;
+    }
+  }
+
+  &--active {
+    #{$this}__icon {
+      &--close {
+        display: block;
+      }
+
+      &--menu {
+        display: none;
+      }
+    }
+
+    #{$this}__text {
+      &--close {
+        display: block;
+      }
+
+      &--menu {
+        display: none;
+      }
+    }
+  }
+}

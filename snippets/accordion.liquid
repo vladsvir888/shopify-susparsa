@@ -1,0 +1,20 @@
+<div class="accordion {{ class }}">
+  {% for block in section_blocks %}
+    <div class="accordion__item" {{ block.shopify_attributes }}>
+      <h2 id="accordion_heading_{{ block.id }}" class="accordion__heading">
+        <button
+          class="accordion__btn"
+          aria-expanded="false"
+          aria-controls="collapse_{{ block.id }}">
+          {{ block.settings.heading }}
+        </button>
+      </h2>
+      <section
+        id="collapse_{{ block.id }}"
+        class="accordion__content"
+        aria-labelledby="accordion_heading_{{ block.id }}">
+        {{ block.settings.text }}
+      </section>
+    </div>
+  {% endfor %}
+</div>

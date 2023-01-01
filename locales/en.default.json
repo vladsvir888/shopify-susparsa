@@ -63,8 +63,8 @@
     "tax_included": "Tax included",
     "counter": {
       "name": "Quantity",
-      "increase_btn": "Increase counter",
-      "decrease_btn": "Decrease counter",
+      "increase_btn": "Increase",
+      "decrease_btn": "Decrease",
       "input": "Quantity"
     }
   },

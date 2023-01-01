@@ -1,0 +1,21 @@
+<div class="counter">
+  <button
+    class="counter__btn counter__btn--minus"
+    type="button"
+    aria-label="{{ 'general.counter.decrease_btn' | t }}">
+    {% render 'icon', icon: "minus" %}
+  </button>
+  <input
+    class="counter__input"
+    type="number"
+    name="quantity"
+    inputmode="numeric"
+    value="1"
+    aria-label="{{ 'general.counter.input' | t }}">
+  <button
+    class="counter__btn counter__btn--plus"
+    type="button"
+    aria-label="{{ 'general.counter.increase_btn' | t }}">
+    {% render 'icon', icon: "plus" %}
+  </button>
+</div>

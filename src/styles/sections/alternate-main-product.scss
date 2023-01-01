@@ -1,0 +1,98 @@
+.product-card {
+  margin-bottom: 6.25rem;
+
+  @include media('767', max) {
+    margin-bottom: 3rem;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 58.5% 1fr;
+    gap: 1.75rem 4rem;
+
+    @include media('1200', max) {
+      display: block;
+
+      > * {
+        margin-bottom: 2.5rem;
+      }
+    }
+  }
+
+  &__img-wrap {
+    position: relative;
+    display: block;
+    width: 29.5625rem;
+    height: 44.1875rem;
+    margin-left: 9.5rem;
+
+    @include media('1200', max) {
+      margin-left: 0;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__content {
+    position: sticky;
+    top: 1rem;
+
+    @include media('1200', max) {
+      position: static;
+    }
+  }
+
+  &__header {
+    --offset-y: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  &__title {
+    font-size: 1.375rem;
+    font-weight: 400;
+    line-height: 1.227;
+    letter-spacing: var(--lts1);
+  }
+
+  &__price {
+    font-size: 1.25rem;
+    letter-spacing: var(--lts1);
+    line-height: 1.6;
+  }
+
+  &__note {
+    color: var(--pallette-shuttle-gray);
+    letter-spacing: var(--lts1);
+  }
+
+  &__form {
+    margin-bottom: 3rem;
+  }
+
+  &__btn {
+    padding: 1rem;
+    transition: color var(--transition), background-color var(--transition);
+
+    &:hover {
+      color: var(--pallette-white);
+      background-color: var(--pallette-shuttle-gray);
+    }
+
+    @include media('500', max) {
+      width: 100%;
+    }
+  }
+
+  &__footer {
+    --offset-y: 1.2rem;
+  }
+
+  &__text {
+    font-size: 1.125rem;
+    letter-spacing: calc(var(--lts1) * -1);
+  }
+}
