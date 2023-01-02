@@ -86,5 +86,8 @@
                 "never"
             ]
         }
+    },
+    "dependencies": {
+        "focus-trap": "^7.2.0"
     }
 }

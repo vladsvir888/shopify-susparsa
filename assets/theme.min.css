@@ -633,6 +633,7 @@ body {
   color: var(--pallette-white);
   background-color: var(--pallette-deep-koamaru);
   transform: translateY(-1rem);
+  visibility: hidden;
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--transition), transform var(--transition);
@@ -653,6 +654,7 @@ body {
 .burger-menu--active {
   opacity: 1;
   pointer-events: auto;
+  visibility: visible;
   transform: translateY(0);
 }
 .burger-menu__list {

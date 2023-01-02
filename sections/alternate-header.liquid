@@ -1,8 +1,8 @@
+{% render 'skip-link', href: 'main' %}
 <header
   class="header"
   data-section-type="alternate-header"
   data-section-id="{{ section.id }}">
-  {% render 'skip-link', href: 'main' %}
   <div class="container header__container">
     {% render 'burger' %}
     {% assign menu = section.settings.menu %}
