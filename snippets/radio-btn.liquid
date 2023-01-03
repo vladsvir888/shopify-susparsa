@@ -1,0 +1,33 @@
+{% if product_option.name == 'Size' %}
+  <div class="radio-btn">
+    <input
+      class="radio-btn__input visually-hidden"
+      id="size_{{ value | downcase }}"
+      type="radio"
+      name="options[{{ product_option.name }}]"
+      value="{{ value }}"
+      {% if product_option.selected_value == value %}checked{% endif %}>
+    <label class="radio-btn__label" for="size_{{ value | downcase }}">
+      {{ value }}
+    </label>
+  </div>
+{% elsif product_option.name == 'Color' %}
+  {% assign arr_color = value | split: '|' %}
+  {% assign name_color = arr_color[0] %}
+  {% assign hex_color = arr_color[1] %}
+  <div class="radio-btn radio-btn--color">
+    <input
+      class="radio-btn__input visually-hidden"
+      id="color_{{ name_color | downcase }}"
+      type="radio"
+      name="options[{{ product_option.name }}]"
+      value="{{ value }}"
+      {% if product_option.selected_value == value %}checked{% endif %}>
+    <label
+      class="radio-btn__label {% if name_color == 'White' %}radio-btn__label--white{% endif %}"
+      for="color_{{ name_color | downcase }}"
+      style="--color: {{ hex_color }};">
+      <span class="radio-btn__tooltip" role="tooltip">{{ name_color }}</span>
+    </label>
+  </div>
+{% endif %}

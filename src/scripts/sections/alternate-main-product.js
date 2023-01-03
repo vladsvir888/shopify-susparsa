@@ -1,10 +1,13 @@
 import {register} from '@shopify/theme-sections';
+import {getUrlWithVariant, ProductForm} from '@shopify/theme-product-form';
+import * as currency from '@shopify/theme-currency';
 
 import Accordion from '../components/accordion';
 
 register('alternate-main-product', {
   accordion: null,
   form: null,
+  productForm: null,
 
   showNotification(notification) {
     const strNotification = `
@@ -22,15 +25,11 @@ register('alternate-main-product', {
 
       setTimeout(() => {
         notificationMessage.remove();
-      }, 1000);
+      }, 1500);
     }, 500);
   },
 
-  isStatusText(text) {
-    return Boolean(text);
-  },
-
-  async fetchData(event) {
+  async onFormSubmit(event) {
     event.preventDefault();
 
     const {target} = event;
@@ -43,9 +42,9 @@ register('alternate-main-product', {
       body: new FormData(target),
     });
 
-    if (response.ok) {
-      const result = await response.json();
+    const result = await response.json();
 
+    if (response.ok) {
       const cartAddedEvent = new CustomEvent('cart:added', {
         detail: {
           header: result.sections['alternate-header'],
@@ -55,21 +54,46 @@ register('alternate-main-product', {
 
       this.form.dispatchEvent(cartAddedEvent);
 
-      const isStatusText = this.isStatusText(response.statusText);
-
-      if (isStatusText) {
-        this.showNotification(response.statusText);
-      } else {
-        this.showNotification('Product added to cart.');
-      }
+      this.showNotification(`${result.title} added to your cart`);
     } else {
-      const isStatusText = this.isStatusText(response.statusText);
+      this.showNotification(result.description);
+    }
+  },
 
-      if (isStatusText) {
-        this.showNotification(response.statusText);
-      } else {
-        this.showNotification('Something went wrong.');
-      }
+  onOptionChange(event) {
+    const variant = event.dataset.variant;
+    const productCard = event.target.closest('.product-card');
+    const addToCartBtn = productCard.querySelector(
+      '.product-card__btn[value="add"]',
+    );
+    const priceEl = productCard.querySelector('.product-card__price-num');
+    const price = currency.formatMoney(variant.price, window.vs888MoneyFormat);
+
+    if (!variant) return;
+
+    const url = getUrlWithVariant(window.location.href, variant.id);
+    window.history.replaceState({path: url}, '', url);
+
+    priceEl.textContent = price;
+
+    if (variant.available) {
+      addToCartBtn.removeAttribute('disabled');
+    } else {
+      addToCartBtn.setAttribute('disabled', true);
+    }
+  },
+
+  async fetchProduct(productHandle, form) {
+    const response = await fetch(`/products/${productHandle}.js`);
+
+    if (response.ok) {
+      const data = await response.json();
+
+      // eslint-disable-next-line no-unused-vars
+      const productForm = new ProductForm(form, data, {
+        onOptionChange: this.onOptionChange,
+        onFormSubmit: this.onFormSubmit.bind(this),
+      });
     }
   },
 
@@ -81,12 +105,13 @@ register('alternate-main-product', {
 
     this.form = this.container.querySelector('.form');
     this.btnWrap = this.container.querySelector('.form__btn-wrap');
-
-    this.form.addEventListener('submit', this.fetchData.bind(this));
+    this.productHandle = this.container.dataset.handle;
+    this.fetchProduct(this.productHandle, this.form);
   },
 
   onUnload() {
     this.form.removeEventListener('submit', this.fetchData);
+    this.productForm.destroy();
   },
 
   onBlockSelect(event) {

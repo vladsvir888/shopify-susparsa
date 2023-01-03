@@ -1,7 +1,8 @@
 <article
   class="product-card"
   data-section-type="alternate-main-product"
-  data-section-id="{{ section.id }}">
+  data-section-id="{{ section.id }}"
+  data-handle="{{ product.handle }}">
   <div class="container product-card__container">
     {% if product.featured_image != blank %}
       <div class="product-card__img-wrap">
@@ -18,7 +19,9 @@
         {% if product.price != blank %}
           <p class="product-card__price">
             <abbr title="{{ 'accessibility.euro_abbr' | t }}">{{ shop.currency }}</abbr>
-            {{ product.price | money_without_currency }}
+            <span class="product-card__price-num">
+              {{ product.price | money_without_currency }}
+            </span>
           </p>
         {% endif %}
         <p class="product-card__note">
@@ -27,192 +30,33 @@
           </small>
         </p>
       </header>
+      <script>
+        window.vs888MoneyFormat = {{ shop.money_format | json }};
+      </script>
       {% form 'product', product, id: "product-form", class: "form product-card__form" %}
-        <select
-          name="id"
-          id="product-variants"
-          style="margin-bottom: 1rem;">
-          {% for variant in product.variants %}
-            <option value="{{ variant.id }}" {% if product.selected_or_first_available_variant.id == variant.id %}selected{% endif %}>
-              {{ variant.title }}
-            </option>
-          {% endfor %}
-        </select>
         <input
           type="hidden"
           name="sections"
           value="alternate-header">
         <div class="offset-y form__fieldset-wrap">
-          <fieldset class="form__fieldset">
-            <legend class="form__caption">
-              Size
-            </legend>
-            <div class="offset-x form__inner">
-              <div class="radio-btn">
-                <input
-                  class="radio-btn__input visually-hidden"
-                  id="size_xs"
-                  type="radio"
-                  name="size"
-                  value="XS">
-                <label class="radio-btn__label" for="size_xs">
-                  XS
-                </label>
+          {% for product_option in product.options_with_values %}
+            <fieldset class="form__fieldset">
+              <legend class="form__caption">
+                {% if product_option.name == 'Size' %}
+                  {{ product_option.name }}
+                {% elsif product_option.name == 'Color' %}
+                  {% assign arr_color = product_option.selected_value | split: '|' %}
+                  {{ product_option.name }} -
+                  <span>{{ arr_color[0] }}</span>
+                {% endif %}
+              </legend>
+              <div class="offset-x form__inner">
+                {% for value in product_option.values %}
+                  {% render 'radio-btn', value: value, product_option: product_option %}
+                {% endfor %}
               </div>
-              <div class="radio-btn">
-                <input
-                  class="radio-btn__input visually-hidden"
-                  id="size_s"
-                  type="radio"
-                  name="size"
-                  value="S"
-                  checked>
-                <label class="radio-btn__label" for="size_s">
-                  S
-                </label>
-              </div>
-              <div class="radio-btn">
-                <input
-                  class="radio-btn__input visually-hidden"
-                  id="size_m"
-                  type="radio"
-                  name="size"
-                  value="M">
-                <label class="radio-btn__label" for="size_m">
-                  M
-                </label>
-              </div>
-              <div class="radio-btn">
-                <input
-                  class="radio-btn__input visually-hidden"
-                  id="size_l"
-                  type="radio"
-                  name="size"
-                  value="L">
-                <label class="radio-btn__label" for="size_l">
-                  L
-                </label>
-              </div>
-              <div class="radio-btn">
-                <input
-                  class="radio-btn__input visually-hidden"
-                  id="size_xl"
-                  type="radio"
-                  name="size"
-                  value="XL">
-                <label class="radio-btn__label" for="size_xl">
-                  XL
-                </label>
-              </div>
-              <div class="radio-btn">
-                <input
-                  class="radio-btn__input visually-hidden"
-                  id="size_2xl"
-                  type="radio"
-                  name="size"
-                  value="2XL"
-                  disabled>
-                <label class="radio-btn__label" for="size_2xl">
-                  2XL
-                </label>
-              </div>
-            </div>
-          </fieldset>
-          <fieldset class="form__fieldset">
-            <legend class="form__caption">
-              Color
-              <span aria-hidden="true">- White</span>
-            </legend>
-            <div class="offset-x form__inner">
-              <div class="radio-btn radio-btn--color">
-                <input
-                  class="radio-btn__input visually-hidden"
-                  id="color_white"
-                  type="radio"
-                  name="color"
-                  value="White"
-                  checked>
-                <label
-                  class="radio-btn__label radio-btn__label--white"
-                  for="color_white"
-                  style="--color: #fff;">
-                  <span class="radio-btn__tooltip" role="tooltip">White</span>
-                </label>
-              </div>
-              <div class="radio-btn radio-btn--color">
-                <input
-                  class="radio-btn__input visually-hidden"
-                  id="color_black"
-                  type="radio"
-                  name="color"
-                  value="Black">
-                <label
-                  class="radio-btn__label"
-                  for="color_black"
-                  style="--color: #000;">
-                  <span class="radio-btn__tooltip" role="tooltip">Black</span>
-                </label>
-              </div>
-              <div class="radio-btn radio-btn--color">
-                <input
-                  class="radio-btn__input visually-hidden"
-                  id="color_gray"
-                  type="radio"
-                  name="color"
-                  value="Gray">
-                <label
-                  class="radio-btn__label"
-                  for="color_gray"
-                  style="--color: #aeaeb0;">
-                  <span class="radio-btn__tooltip" role="tooltip">Gray</span>
-                </label>
-              </div>
-              <div class="radio-btn radio-btn--color">
-                <input
-                  class="radio-btn__input visually-hidden"
-                  id="color_purple_latte"
-                  type="radio"
-                  name="color"
-                  value="Purple latte">
-                <label
-                  class="radio-btn__label"
-                  for="color_purple_latte"
-                  style="--color: #ba9be5;">
-                  <span class="radio-btn__tooltip" role="tooltip">Purple latte</span>
-                </label>
-              </div>
-              <div class="radio-btn radio-btn--color">
-                <input
-                  class="radio-btn__input visually-hidden"
-                  id="color_red"
-                  type="radio"
-                  name="color"
-                  value="Red"
-                  disabled>
-                <label
-                  class="radio-btn__label"
-                  for="color_red"
-                  style="--color: #e9a0a7;">
-                  <span class="radio-btn__tooltip" role="tooltip">Pink</span>
-                </label>
-              </div>
-              <div class="radio-btn radio-btn--color">
-                <input
-                  class="radio-btn__input visually-hidden"
-                  id="color_peach"
-                  type="radio"
-                  name="color"
-                  value="Peach"
-                  disabled>
-                <label
-                  class="radio-btn__label"
-                  for="color_peach"
-                  style="--color: #f8cab1;">
-                  <span class="radio-btn__tooltip" role="tooltip">Peach</span>
-                </label>
-              </div>
-            </div>
-          </fieldset>
+            </fieldset>
+          {% endfor %}
           <fieldset class="form__fieldset">
             <legend class="form__caption">
               {{ 'general.counter.name' | t }}

@@ -15,9 +15,9 @@ class Burger {
     this.btn = document.querySelector(Burger.selectors.btn);
     this.menu = document.querySelector(Burger.selectors.menu);
     this.trap = focusTrap.createFocusTrap(Burger.selectors.header);
+  }
 
-    if (!this.btn) return;
-
+  init() {
     this.btn.addEventListener('click', this.onClick.bind(this));
 
     document.addEventListener('keydown', this.onKeyDown.bind(this));
@@ -39,14 +39,17 @@ class Burger {
 
   onKeyDown(event) {
     if (
-      event.code === 'Escape' &&
-      this.menu.classList.contains(Burger.classes.menu)
-    ) {
-      this.btn.classList.remove('burger--active');
-      this.btn.setAttribute('aria-expanded', false);
-      this.menu.classList.remove('burger-menu--active');
-      this.trap.deactivate();
-    }
+      !(
+        event.code === 'Escape' &&
+        this.menu.classList.contains(Burger.classes.menu)
+      )
+    )
+      return;
+
+    this.btn.classList.remove('burger--active');
+    this.btn.setAttribute('aria-expanded', false);
+    this.menu.classList.remove('burger-menu--active');
+    this.trap.deactivate();
   }
 }
 

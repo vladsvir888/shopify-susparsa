@@ -9,9 +9,9 @@ class Counter {
     this.counter = document.querySelector(Counter.selectors.counter);
     this.input = this.counter.querySelector(Counter.selectors.input);
     this.btns = this.counter.querySelectorAll(Counter.selectors.btn);
+  }
 
-    if (!this.counter) return;
-
+  init() {
     this.btns.forEach((btn) =>
       btn.addEventListener('click', this.onClick.bind(this)),
     );

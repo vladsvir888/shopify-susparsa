@@ -9,6 +9,6 @@ import Counter from './components/counter';
 document.addEventListener('DOMContentLoaded', () => {
   load('*');
 
-  new Burger();
-  new Counter();
+  new Burger().init();
+  new Counter().init();
 });
