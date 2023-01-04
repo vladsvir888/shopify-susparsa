@@ -47,7 +47,7 @@
                 {% elsif product_option.name == 'Color' %}
                   {% assign arr_color = product_option.selected_value | split: '|' %}
                   {{ product_option.name }} -
-                  <span>{{ arr_color[0] }}</span>
+                  <span class="form__caption-color">{{ arr_color[0] }}</span>
                 {% endif %}
               </legend>
               <div class="offset-x form__inner">

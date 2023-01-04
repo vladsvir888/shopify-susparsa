@@ -66,6 +66,8 @@ register('alternate-main-product', {
     const addToCartBtn = productCard.querySelector(
       '.product-card__btn[value="add"]',
     );
+    const colorEl = productCard.querySelector('.form__caption-color');
+    const color = event.dataset.options[1].value.split('|')[0];
     const priceEl = productCard.querySelector('.product-card__price-num');
     const price = currency.formatMoney(variant.price, window.vs888MoneyFormat);
 
@@ -74,6 +76,7 @@ register('alternate-main-product', {
     const url = getUrlWithVariant(window.location.href, variant.id);
     window.history.replaceState({path: url}, '', url);
 
+    colorEl.textContent = color;
     priceEl.textContent = price;
 
     if (variant.available) {
