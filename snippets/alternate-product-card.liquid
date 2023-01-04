@@ -16,26 +16,15 @@
       </h3>
     {% endif %}
     <ul class="offset-x advice-card__list" role="list">
-      <li class="advice-card__item" style="--color: #c88252;">
-        <a class="advice-card__link" href="#">
-          <span class="visually-hidden">Brown</span>
-        </a>
-      </li>
-      <li class="advice-card__item" style="--color: #f8cab1;">
-        <a class="advice-card__link" href="#">
-          <span class="visually-hidden">Orange</span>
-        </a>
-      </li>
-      <li class="advice-card__item" style="--color: #e9a0a7;">
-        <a class="advice-card__link" href="#">
-          <span class="visually-hidden">Red</span>
-        </a>
-      </li>
-      <li class="advice-card__item" style="--color: #ba9be5;">
-        <a class="advice-card__link" href="#">
-          <span class="visually-hidden">Purple</span>
-        </a>
-      </li>
+      {% for variant in product.variants %}
+        {% if variant.option1 == 'XS' %}
+          <li class="advice-card__item" style="--color: {{ variant.option2 }};">
+            <a class="advice-card__link" href="{{ variant.url }}">
+              <span class="visually-hidden">{{ variant.option2 }}</span>
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
     </ul>
     <p class="advice-card__text">
       <abbr title="{{ 'accessibility.euro_abbr' | t }}">{{ shop.currency }}</abbr>
