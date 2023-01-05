@@ -15,6 +15,13 @@
   {% assign arr_color = value | split: '|' %}
   {% assign name_color = arr_color[0] %}
   {% assign hex_color = arr_color[1] %}
+  {% capture color %}
+    {% if hex_color != blank %}
+      {{ hex_color }}
+    {% else %}
+      {{ name_color }}
+    {% endif %}
+  {% endcapture %}
   <div class="radio-btn radio-btn--color">
     <input
       class="radio-btn__input visually-hidden"
@@ -26,7 +33,7 @@
     <label
       class="radio-btn__label {% if name_color == 'White' %}radio-btn__label--white{% endif %}"
       for="color_{{ name_color | downcase }}"
-      style="--color: {{ hex_color }};">
+      style="--color: {{ color }};">
       <span class="radio-btn__tooltip" role="tooltip">{{ name_color }}</span>
     </label>
   </div>

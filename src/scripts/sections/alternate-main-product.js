@@ -92,12 +92,17 @@ register('alternate-main-product', {
     if (response.ok) {
       const data = await response.json();
 
-      // eslint-disable-next-line no-unused-vars
-      const productForm = new ProductForm(form, data, {
+      this.productForm = new ProductForm(form, data, {
         onOptionChange: this.onOptionChange,
         onFormSubmit: this.onFormSubmit.bind(this),
       });
     }
+  },
+
+  onCheckoutBtn() {
+    const idVariant = this.productForm.variant().id;
+
+    window.location = `${window.location.origin}/cart/${idVariant}:${this.quantityInput.value}`;
   },
 
   onLoad() {
@@ -108,8 +113,15 @@ register('alternate-main-product', {
 
     this.form = this.container.querySelector('.form');
     this.btnWrap = this.container.querySelector('.form__btn-wrap');
+
     this.productHandle = this.container.dataset.handle;
     this.fetchProduct(this.productHandle, this.form);
+
+    this.checkoutBtn = this.container.querySelector(
+      '.product-card__btn[value="quick-buy"]',
+    );
+    this.quantityInput = this.container.querySelector('.counter__input');
+    this.checkoutBtn.addEventListener('click', this.onCheckoutBtn.bind(this));
   },
 
   onUnload() {
