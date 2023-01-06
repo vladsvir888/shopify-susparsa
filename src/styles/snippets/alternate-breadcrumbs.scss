@@ -39,7 +39,10 @@
     }
 
     &[aria-current='page'] {
-      color: var(--pallette-manatee);
+      &::before {
+        transform-origin: left;
+        transform: scaleX(1);
+      }
     }
   }
 }
