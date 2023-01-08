@@ -6,7 +6,7 @@
   <div class="container product-card__container">
     {% if product.featured_image != blank %}
       <div class="product-card__img-wrap">
-        {% render 'skip-link', href: 'product_card_content' %}
+        {% render 'skip-link', href: '#product_card_content', text: 'accessibility.skip_to_product_info' %}
         {{ product.featured_image | image_url: width: 473, height: 707 | image_tag: class: 'product-card__img', alt: 'Girl in white unisex t-shirt.' }}
       </div>
     {% endif %}
@@ -15,7 +15,7 @@
       class="product-card__content"
       tabindex="-1">
       <header class="offset-y product-card__header">
-        <h1 id="main_title" class="product-card__title">{{ product.title }}</h1>
+        <h1 class="product-card__title">{{ product.title }}</h1>
         {% if product.price != blank %}
           <p class="product-card__price">
             <abbr title="{{ 'accessibility.euro_abbr' | t }}">{{ shop.currency }}</abbr>
@@ -31,7 +31,7 @@
         </p>
       </header>
       <script>
-        window.vs888MoneyFormat = {{ shop.money_format | json }};
+        window.money_format = {{ shop.money_format | json }};
       </script>
       {% form 'product', product, id: "product-form", class: "form product-card__form" %}
         <input
@@ -42,11 +42,10 @@
           {% for product_option in product.options_with_values %}
             <fieldset class="form__fieldset">
               <legend class="form__caption">
-                {% if product_option.name == 'Size' %}
-                  {{ product_option.name }}
-                {% elsif product_option.name == 'Color' %}
+                {{ product_option.name }}
+                {% if product_option.name == 'Color' %}
                   {% assign arr_color = product_option.selected_value | split: '|' %}
-                  {{ product_option.name }} -
+                  -
                   <span class="form__caption-color">{{ arr_color[0] }}</span>
                 {% endif %}
               </legend>
@@ -66,17 +65,15 @@
         </div>
         <div class="offset-y form__btn-wrap">
           <button
-            class="btn btn--primary product-card__btn"
-            value="add"
-            type="submit">
+            class="btn btn--primary product-card__add-cart-btn"
+            type="submit"
+            data-atc="{{ 'products.product.add_to_cart' | t }}"
+            data-unavailable="{{ 'products.product.unavailable' | t }}">
             {{ 'products.product.add_to_cart' | t }}
           </button>
-          <button
-            class="btn btn--secondary product-card__btn"
-            value="quick-buy"
-            type="button">
+          <a class="btn btn--secondary product-card__checkout-btn">
             {{ 'products.product.buy_it_now' | t }}
-          </button>
+          </a>
         </div>
       {% endform %}
       {% if product.description != blank %}

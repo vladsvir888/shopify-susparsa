@@ -1,0 +1,5 @@
+{% unless product.available %}
+  <ul class="tags {{ class }}" role="list">
+    <li class="tags__item">{{ text | t }}</li>
+  </ul>
+{% endunless %}

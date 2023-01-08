@@ -1,11 +1,7 @@
 <article class="advice-card">
   <div class="advice-card__inner">
     {{ product.featured_image | image_url: width: 248, height: 368 | image_tag: class: 'advice-card__img' }}
-    <ul class="advice-card__tags" role="list">
-      {% unless product.available %}
-        {% render 'tag', text: 'products.product.sold_out' %}
-      {% endunless %}
-    </ul>
+    {% render 'tags', text: 'products.product.sold_out', class: 'advice-card__tags', product: product %}
   </div>
   <div class="advice-card__content">
     {% if product.title != blank %}
@@ -16,8 +12,8 @@
       </h3>
     {% endif %}
     <ul class="offset-x advice-card__list" role="list">
-      {% for variant in product.variants %}
-        {% if variant.option1 == 'XS' %}
+      {% for variant in product.variants limit: 6 %}
+        {% if variant.available %}
           <li class="advice-card__item" style="--color: {{ variant.option2 }};">
             <a class="advice-card__link" href="{{ variant.url }}">
               <span class="visually-hidden">{{ variant.option2 }}</span>

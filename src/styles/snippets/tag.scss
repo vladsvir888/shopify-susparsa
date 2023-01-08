@@ -1,6 +1,8 @@
-.tag {
-  padding: 0.1875rem 0.3125rem;
-  color: var(--pallette-shuttle-gray);
-  font-size: 0.8125rem;
-  background-color: var(--pallette-white);
+.tags {
+  &__item {
+    padding: 0.1875rem 0.3125rem;
+    color: var(--pallette-shuttle-gray);
+    font-size: 0.8125rem;
+    background-color: var(--pallette-white);
+  }
 }

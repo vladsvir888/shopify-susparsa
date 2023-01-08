@@ -1,0 +1,29 @@
+.notification {
+  padding: 0.8rem 0.5rem;
+  text-align: center;
+  color: var(--pallette-black);
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--pallette-silver);
+  background-color: var(--pallette-white);
+  animation: notificationAnim 0.2s forwards;
+
+  &--success {
+    border-top: 0.2rem solid var(--pallette-malachite);
+  }
+
+  &--error {
+    border-top: 0.2rem solid var(--pallette-amaranth);
+  }
+}
+
+@keyframes notificationAnim {
+  from {
+    opacity: 0;
+    transform: translate(0%, 0%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0%, -20%);
+  }
+}

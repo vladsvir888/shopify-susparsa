@@ -73,20 +73,6 @@
     margin-bottom: 3rem;
   }
 
-  &__btn {
-    padding: 1rem;
-    transition: color var(--transition), background-color var(--transition);
-
-    &:hover {
-      color: var(--pallette-white);
-      background-color: var(--pallette-shuttle-gray);
-    }
-
-    @include media('500', max) {
-      width: 100%;
-    }
-  }
-
   &__footer {
     --offset-y: 1.2rem;
   }

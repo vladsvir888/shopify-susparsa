@@ -35,15 +35,16 @@
     {{ content_for_header }}
   </head>
   <body>
+    {% render 'skip-link', href: '#main', text: 'accessibility.skip_to_text' %}
     {% section 'alternate-header' %}
     {% render 'alternate-breadcrumbs' %}
     <main
       id="main"
       class="main"
-      tabindex="-1"
-      aria-labelledby="main_title">
+      tabindex="-1">
       {{ content_for_layout }}
     </main>
     {% section 'alternate-footer' %}
+    {% render 'notification-stack' %}
   </body>
 </html>

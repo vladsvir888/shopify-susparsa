@@ -90,8 +90,32 @@ body {
   margin: 0 auto;
 }
 
+.offset-x > *:not(:last-child) {
+  margin-right: var(--offset-x, 1rem);
+}
+
+.offset-y > *:not(:last-child) {
+  margin-bottom: var(--offset-y, 1rem);
+}
+
+::-webkit-scrollbar {
+  width: 0.625rem;
+  height: 0.625rem;
+  background-color: var(--white);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--pallette-deep-koamaru);
+  border-radius: 0.5rem;
+}
+
+:focus-visible {
+  outline: 0.0625rem dashed var(--pallette-amaranth);
+  outline-offset: 0.2rem;
+}
+
 .btn {
-  padding: 0;
+  padding: 1rem;
   background-color: transparent;
   border: none;
   color: inherit;
@@ -100,7 +124,14 @@ body {
   letter-spacing: var(--lts2);
   text-transform: uppercase;
   text-align: center;
+  text-decoration: none;
   cursor: pointer;
+  transition: color var(--transition), background-color var(--transition);
+
+  &:hover {
+    color: var(--pallette-white);
+    background-color: var(--pallette-shuttle-gray);
+  }
 
   &--primary {
     border: 0.0625rem solid var(--pallette-silver);
@@ -112,14 +143,10 @@ body {
     border: 0.0625rem solid transparent;
   }
 
-  &:disabled {
+  &[disabled] {
     opacity: 0.5;
-    cursor: not-allowed;
-
-    &:hover {
-      color: unset;
-      background-color: unset;
-    }
+    pointer-events: none;
+    user-select: none;
   }
 }
 
@@ -147,65 +174,12 @@ body {
   }
 }
 
-.offset-x > *:not(:last-child) {
-  margin-right: var(--offset-x, 1rem);
-}
-
-.offset-y > *:not(:last-child) {
-  margin-bottom: var(--offset-y, 1rem);
-}
-
-::-webkit-scrollbar {
-  width: 0.625rem;
-  height: 0.625rem;
-  background-color: var(--white);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--pallette-deep-koamaru);
-  border-radius: 0.5rem;
-}
-
-:focus-visible {
-  outline-offset: 0.2rem;
-}
-
 .main {
   &__accordion {
     padding-left: 2.4rem;
 
     @include media('1200', max) {
       padding-left: 0;
-    }
-  }
-}
-
-.notification {
-  position: absolute;
-  left: 50%;
-  bottom: 100%;
-  transform: translate(-50%, 0%);
-  padding: 1rem;
-  white-space: nowrap;
-  border-radius: 0.5rem;
-  color: var(--pallette-white);
-  background-color: var(--pallette-deep-koamaru);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--transition), transform var(--transition);
-
-  @include media('1200', max) {
-    left: 0;
-    transform: translate(0%, 0%);
-  }
-
-  &.notification--active {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, -20%);
-
-    @include media('1200', max) {
-      transform: translate(0%, -20%);
     }
   }
 }

@@ -34,15 +34,8 @@
     text-decoration: none;
     transition: color var(--transition);
 
-    &:hover {
-      color: var(--pallette-shuttle-gray);
-    }
-
     &[aria-current='page'] {
-      &::before {
-        transform-origin: left;
-        transform: scaleX(1);
-      }
+      color: var(--pallette-rolling-stone);
     }
   }
 }

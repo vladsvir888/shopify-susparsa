@@ -1,8 +1,16 @@
 import {register} from '@shopify/theme-sections';
 
+import Burger from '../components/burger';
+
 register('alternate-header', {
   onLoad() {
+    this.burger = new Burger().init();
+
     document.addEventListener('cart:added', this.onCartAdded.bind(this));
+  },
+
+  onUnload() {
+    document.removeEventListener('cart:added', this.onCartAdded);
   },
 
   onCartAdded(event) {
@@ -17,9 +25,5 @@ register('alternate-header', {
     if (!counter) return;
 
     counter.textContent = doc.querySelector('.main-nav__counter').textContent;
-  },
-
-  onUnload() {
-    document.removeEventListener('cart:added', this.onCartAdded);
   },
 });
