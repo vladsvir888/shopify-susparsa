@@ -114,42 +114,6 @@ body {
   outline-offset: 0.2rem;
 }
 
-.btn {
-  padding: 1rem;
-  background-color: transparent;
-  border: none;
-  color: inherit;
-  font-size: 0.875rem;
-  font-weight: 400;
-  letter-spacing: var(--lts2);
-  text-transform: uppercase;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  transition: color var(--transition), background-color var(--transition);
-
-  &:hover {
-    color: var(--pallette-white);
-    background-color: var(--pallette-shuttle-gray);
-  }
-
-  &--primary {
-    border: 0.0625rem solid var(--pallette-silver);
-  }
-
-  &--secondary {
-    color: var(--pallette-white);
-    background-color: var(--pallette-deep-koamaru);
-    border: 0.0625rem solid transparent;
-  }
-
-  &[disabled] {
-    opacity: 0.5;
-    pointer-events: none;
-    user-select: none;
-  }
-}
-
 .link {
   position: relative;
 
@@ -181,35 +145,5 @@ body {
     @include media('1200', max) {
       padding-left: 0;
     }
-  }
-}
-
-.form {
-  &__fieldset-wrap {
-    --offset-y: 1.5rem;
-    margin-bottom: 2.5rem;
-  }
-
-  &__caption {
-    margin-bottom: 0.75rem;
-    letter-spacing: var(--lts1);
-    line-height: 1.2;
-  }
-
-  &__inner {
-    --offset-x: 0.75rem;
-    @include flex-wrap;
-    margin-bottom: -0.5rem;
-
-    > * {
-      margin-bottom: 0.5rem;
-    }
-  }
-
-  &__btn-wrap {
-    --offset-y: 0.75rem;
-    position: relative;
-    @include flex-column;
-    max-width: 25.5rem;
   }
 }

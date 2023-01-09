@@ -4,7 +4,7 @@ import Burger from '../components/burger';
 
 register('alternate-header', {
   onLoad() {
-    this.burger = new Burger().init();
+    this.burger = Burger.init(this.container);
 
     document.addEventListener('cart:added', this.onCartAdded.bind(this));
   },

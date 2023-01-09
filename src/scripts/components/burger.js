@@ -12,11 +12,15 @@ class Burger {
     menu: 'burger-menu--active',
   };
 
-  init() {
-    this.btn = document.querySelector(Burger.selectors.btn);
-    this.menu = document.querySelector(Burger.selectors.menu);
-    this.trap = focusTrap.createFocusTrap(Burger.selectors.header);
-    this.logo = document.querySelector(Burger.selectors.header_logo);
+  static init(containerEl) {
+    return new Burger(containerEl);
+  }
+
+  constructor(containerEl) {
+    this.btn = containerEl.querySelector(Burger.selectors.btn);
+    this.menu = containerEl.querySelector(Burger.selectors.menu);
+    this.logo = containerEl.querySelector(Burger.selectors.header_logo);
+    this.trap = focusTrap.createFocusTrap(containerEl);
 
     this.btn.addEventListener('click', this.onClick.bind(this));
     document.addEventListener('keydown', this.onKeyDown.bind(this));

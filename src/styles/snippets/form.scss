@@ -1,0 +1,29 @@
+.form {
+  &__fieldset-wrap {
+    --offset-y: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  &__caption {
+    margin-bottom: 0.75rem;
+    letter-spacing: var(--lts1);
+    line-height: 1.2;
+  }
+
+  &__inner {
+    --offset-x: 0.75rem;
+    @include flex-wrap;
+    margin-bottom: -0.5rem;
+
+    > * {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__btn-wrap {
+    --offset-y: 0.75rem;
+    position: relative;
+    @include flex-column;
+    max-width: 25.5rem;
+  }
+}

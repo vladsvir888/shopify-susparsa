@@ -4,6 +4,7 @@ import * as currency from '@shopify/theme-currency';
 
 import Accordion from '../components/accordion';
 import Counter from '../components/counter';
+import showNotification from '../components/notification';
 
 register('alternate-main-product', {
   onLoad() {
@@ -11,7 +12,7 @@ register('alternate-main-product', {
       this.container.querySelector(Accordion.selectors.accordion),
       0,
     );
-    this.counter = new Counter().init();
+    this.counter = Counter.init(this.container);
     this.form = this.container.querySelector('.form');
     this.checkoutLink = this.container.querySelector(
       '.product-card__checkout-btn',
@@ -22,7 +23,6 @@ register('alternate-main-product', {
     this.quantityInput = this.container.querySelector('.counter__input');
     this.colorEl = this.container.querySelector('.form__caption-color');
     this.priceEl = this.container.querySelector('.product-card__price-num');
-    this.notificationStack = document.querySelector('.notification-stack');
     this.productHandle = this.container.dataset.handle;
 
     this.fetchProduct(this.productHandle, this.form);
@@ -37,26 +37,6 @@ register('alternate-main-product', {
     if (!this.accordion) return;
 
     this.accordion.toggle(event);
-  },
-
-  showNotification(notificationMessage, type) {
-    const notificationEl = document.createElement('div');
-    notificationEl.classList.add('notification');
-
-    if (type === 'success') {
-      notificationEl.classList.add('notification--success');
-    } else {
-      notificationEl.classList.add('notification--error');
-    }
-
-    notificationEl.setAttribute('role', 'alert');
-    notificationEl.innerHTML = notificationMessage;
-
-    this.notificationStack.append(notificationEl);
-
-    setTimeout(() => {
-      notificationEl.remove();
-    }, 3500);
   },
 
   async onFormSubmit(event) {
@@ -84,9 +64,9 @@ register('alternate-main-product', {
 
       this.form.dispatchEvent(cartAddedEvent);
 
-      this.showNotification(`${result.title} added to your cart`, 'success');
+      showNotification(`${result.title} added to your cart`, 'success');
     } else {
-      this.showNotification(result.description, 'error');
+      showNotification(result.description, 'error');
     }
   },
 
@@ -107,12 +87,10 @@ register('alternate-main-product', {
       this.addToCartBtn.removeAttribute('disabled');
       this.addToCartBtn.textContent = this.addToCartBtn.dataset.atc;
       this.setHrefForLink();
-      this.checkoutLink.removeAttribute('disabled', true);
     } else {
       this.addToCartBtn.setAttribute('disabled', true);
       this.addToCartBtn.textContent = this.addToCartBtn.dataset.unavailable;
       this.checkoutLink.removeAttribute('href');
-      this.checkoutLink.setAttribute('disabled', true);
     }
   },
 

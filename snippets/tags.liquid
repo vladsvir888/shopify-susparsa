@@ -1,5 +1,13 @@
-{% unless product.available %}
-  <ul class="tags {{ class }}" role="list">
+{% capture tag_items %}
+  {% unless product.available %}
     <li class="tags__item">{{ text | t }}</li>
-  </ul>
-{% endunless %}
+  {% endunless %}
+  {% for tag in product.tags %}
+    {% if tag contains 'tag|' %}
+      <li class="tags__item">{{ tag | remove: 'tag|' }}</li>
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+{% if tag_items != blank %}
+  <ul class="tags {{ class }}">{{ tag_items }}</ul>
+{% endif %}
