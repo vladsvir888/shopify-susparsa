@@ -26,6 +26,8 @@ register('alternate-main-product', {
     this.productHandle = this.container.dataset.handle;
 
     this.fetchProduct(this.productHandle, this.form);
+
+    document.addEventListener('input', this.setHrefForLink.bind(this));
   },
 
   onUnload() {

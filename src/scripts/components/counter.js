@@ -25,6 +25,12 @@ class Counter {
     } else if (this.input.value > 1) {
       this.input.stepDown();
     }
+
+    this.input.dispatchEvent(
+      new Event('input', {
+        bubbles: true,
+      }),
+    );
   }
 }
 
