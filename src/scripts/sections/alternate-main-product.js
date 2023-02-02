@@ -112,11 +112,14 @@ register('alternate-main-product', {
   },
 
   setHrefForLink() {
+    const isAvailable = this.productForm.variant().available;
     const idVariant = this.productForm.variant().id;
 
-    this.checkoutLink.setAttribute(
-      'href',
-      `${window.location.origin}/cart/${idVariant}:${this.quantityInput.value}`,
-    );
+    if (isAvailable) {
+      this.checkoutLink.setAttribute(
+        'href',
+        `${window.location.origin}/cart/${idVariant}:${this.quantityInput.value}`,
+      );
+    }
   },
 });
